@@ -37,7 +37,7 @@ struct AQInformation: WeatherDetailInformation {
         
         infoDetails.append(InfoDetailCard(
                 infoDetailName: String(localized: "AQ Index: 101-150"),
-                infoDetailType: String(localized: "Level: Unhealthy\n(for Some people)"),
+                infoDetailType: String(localized: "Level: Unhealthy\nfor Some people"),
                 infoDetailDescription: String(localized: "Sensitive groups (children, elderly, and those with respiratory issues) should reduce outdoor activities. Everyone else can enjoy but wear a mask if exerting themselves.")
         ))
         

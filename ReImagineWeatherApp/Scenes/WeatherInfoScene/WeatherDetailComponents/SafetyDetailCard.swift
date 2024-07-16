@@ -8,11 +8,76 @@
 import SwiftUI
 
 struct SafetyDetailCard: View {
+    var details: (UV: String, AQ: String, Weather: String)
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack {
+            VStack (alignment: .center) {
+                Spacer()
+                
+                Text("UVI")
+                    .font(.footnote)
+                    .bold()
+                
+                Spacer()
+                
+                Text(details.UV)
+                    .font(.caption2)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+            }
+            .frame(width: 95, height: 72)
+            .background(
+                Color.grayTertiary
+            )
+            .cornerRadius(20)
+            
+            VStack (alignment: .center) {
+                Spacer()
+                
+                Text("AQI")
+                    .font(.footnote)
+                    .bold()
+                
+                Spacer()
+                
+                Text(details.AQ)
+                    .font(.caption2)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+            }
+            .frame(width: 95, height: 72)
+            .background(
+                Color.grayTertiary
+            )
+            .cornerRadius(20)
+            
+            VStack (alignment: .center) {
+                Spacer()
+                
+                Text("Weather")
+                    .font(.footnote)
+                    .bold()
+                
+                Spacer()
+                
+                Text(details.Weather)
+                    .font(.caption2)
+                    .multilineTextAlignment(.center)
+                
+                Spacer()
+            }
+            .frame(width: 95, height: 72)
+            .background(
+                Color.grayTertiary
+            )
+            .cornerRadius(20)
+        }
     }
 }
 
 #Preview {
-    SafetyDetailCard()
+    SafetyDetailCard(details: ("Low", "Low", "Cloudy\nPartly Cloudy"))
 }
