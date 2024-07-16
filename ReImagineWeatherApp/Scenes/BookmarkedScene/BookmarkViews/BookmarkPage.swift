@@ -10,19 +10,7 @@ import MapKit
 
 struct BookmarkPage: View {
     
-    let startOfDay: Date
-    var dates: [Date] {
-        let calendar = Calendar.current
-        return (0..<11).compactMap { dayOffset in
-            calendar.date(byAdding: .day, value: dayOffset, to: startOfDay)
-        }
-    }
-    
-    init() {
-        let calendar = Calendar.current
-        let now = Date()
-        self.startOfDay = calendar.startOfDay(for: now)
-    }
+    @ObservedObject var calendarInfo = CalendarInformation()
     
     var body: some View {
         VStack {
@@ -37,11 +25,17 @@ struct BookmarkPage: View {
                 
                 ScrollView(.horizontal) {
                     HStack(spacing: 24) {
-                        ForEach(dates, id: \.self) { date in
+                        
+                        ForEach(calendarInfo.dates, id: \.self) { date in
                             let daySymbol = DateFormatter().shortWeekdaySymbols[Calendar.current.component(.weekday, from: date) - 1].prefix(1)
                             let day = Calendar.current.component(.day, from: date)
+                            let isSelected = Calendar.current.isDate(calendarInfo.selectedDate, inSameDayAs: date)
+                            let isPast = date < calendarInfo.startOfDay
                             
-                            DatePickerComponent(daySymbol: String(daySymbol), day: day)
+                            DatePickerComponent(daySymbol: String(daySymbol), day: day, isPast: isPast, selected: isSelected)
+                                .onTapGesture {
+                                    calendarInfo.select(date: date)
+                                }
                         }
                     }
                 }
@@ -94,4 +88,30 @@ struct BookmarkPage: View {
 
 #Preview {
     BookmarkPage()
+}
+
+class CalendarInformation: ObservableObject {
+    let startOfDay: Date
+    var dates: [Date] {
+        let calendar = Calendar.current
+        return (0..<11).compactMap { dayOffset in
+            calendar.date(byAdding: .day, value: dayOffset, to: startOfDay)
+        }
+    }
+    @Published var selectedDate: Date
+    
+    init() {
+        let calendar = Calendar.current
+        let now = Date()
+        self.startOfDay = calendar.startOfDay(for: now)
+        self.selectedDate = self.startOfDay
+    }
+    
+    func select(date: Date) {
+            if Calendar.current.isDate(selectedDate, inSameDayAs: date) {
+                selectedDate = Calendar.current.startOfDay(for: Date())
+            } else {
+                selectedDate = date
+            }
+        }
 }
