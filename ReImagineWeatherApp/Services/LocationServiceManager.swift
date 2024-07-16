@@ -22,7 +22,6 @@ struct LocationModel {
 
 class LocationServiceManager: NSObject, CLLocationManagerDelegate {
     var currentLocation: LocationModel?
-//    var coordinatesFromAddress: CLLocationCoordinate2D?
     var coordinatesFromAddress: (latitude: Double, longitude: Double)?
     var errorMessage: String?
 
@@ -71,16 +70,32 @@ class LocationServiceManager: NSObject, CLLocationManagerDelegate {
         }
     }
 
+    func searchLocations(query: String, completion: @escaping ([String]) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(query) { placemarks, error in
+            if let error = error {
+                print("Error searching locations: \(error.localizedDescription)")
+                completion([])
+            } else {
+                let locations = placemarks?.compactMap { placemark in
+                    return [placemark.name, placemark.locality, placemark.administrativeArea, placemark.country].compactMap { $0 }.joined(separator: ", ")
+                } ?? []
+                completion(locations)
+            }
+        }
+    }
+    
     // MARK: - CLLocationManagerDelegate
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         guard let location = locations.last else { return }
         fetchAddress(from: location) { [weak self] address in
             DispatchQueue.main.async {
-                self?.currentLocation = LocationModel(
-                    latitude: location.coordinate.latitude,
-                    longitude: location.coordinate.longitude,
-                    address: address
-                )
+                if let address = address {
+                    self?.coordinatesFromAddress = (latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+                    self?.errorMessage = nil
+                } else {
+                    self?.errorMessage = "Failed to fetch address."
+                }
             }
         }
         print("Updated location: Latitude \(location.coordinate.latitude), Longitude \(location.coordinate.longitude)")
