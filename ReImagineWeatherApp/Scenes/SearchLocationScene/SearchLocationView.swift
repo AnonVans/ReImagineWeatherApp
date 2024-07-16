@@ -27,13 +27,13 @@ struct SearchLocationView: View {
                        .overlay(
                         Button(action: searchLocation){
                             HStack {
-                                                           Image(systemName: "magnifyingglass")
-                                                           Spacer()
-                                     }
+                                Image(systemName: "magnifyingglass")
+                                Spacer()
+                            }
                         }
-                           
-                           .padding(.horizontal, 22)
-                           .foregroundColor(.gray)
+                        
+                            .padding(.horizontal, 22)
+                            .foregroundColor(.gray)
                        )
                        
                        
