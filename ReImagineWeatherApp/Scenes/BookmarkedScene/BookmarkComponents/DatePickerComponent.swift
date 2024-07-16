@@ -11,12 +11,13 @@ struct DatePickerComponent: View {
     let day: Int
     let isPast: Bool
     var selected: Bool
+    var safetyStatusColor: Color
     
     var body: some View {
         VStack(spacing: 10) {
             Text(daySymbol)
                 .font(.caption2)
-                .shadow(radius: 10)
+                .shadow(radius: 4.5)
                 .foregroundColor(isPast ? .gray : .primary)
             
             ZStack {
@@ -34,12 +35,12 @@ struct DatePickerComponent: View {
                 }
             }
             .frame(width: 22, height: 26)
-            .shadow(radius: 10)
+            .shadow(radius: 4.5)
             
             Circle()
-                .foregroundColor(isPast ? .gray : Color.paleGreenCircle)
+                .foregroundColor(isPast ? .gray : safetyStatusColor)
                 .frame(width: 8)
-                .shadow(radius: 10)
+                .shadow(radius: 4.5)
         }
         .frame(width: 22, height: 80)
     }

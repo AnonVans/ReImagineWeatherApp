@@ -10,7 +10,7 @@ import SwiftUI
 struct WeatherDetailPage: View {
     var body: some View {
         ScrollView {
-            VStack (spacing: 15){
+            VStack {
                 Text("Green Office Park")
                     .font(.title3)
                     .bold()
@@ -21,34 +21,40 @@ struct WeatherDetailPage: View {
                     .padding(.bottom)
                 
                 
-                ScrollView(.horizontal) {
-                    HStack(spacing: 15) {
-                        ForEach(0..<20) { _ in
-                            Rectangle()
-                                .frame(width: 22)
-                                .foregroundColor(.grayTertiary)
-                                .cornerRadius(10)
-                        }
-                    }
-                }
-                .frame(width: 361, height: 59)
+                ZStack {
                     
-                Divider()
-                
-                ScrollView(.horizontal) {
-                    HStack(spacing: 15) {
-                        ForEach(0..<20) { _ in
-                            Rectangle()
-                                .frame(width: 52)
-                                .foregroundColor(.grayTertiary)
-                                .cornerRadius(15)
+                    VStack (spacing: 15){
+                        CalendarSelectionView()
+                            .padding(.bottom, -10)
+                        
+                        Divider()
+                            .padding(.horizontal)
+                            
+                        
+                        ScrollView(.horizontal) {
+                            HStack(spacing: 15) {
+                                ForEach(0..<20) { _ in
+                                    Rectangle()
+                                        .frame(width: 52)
+                                        .foregroundColor(.grayTertiary)
+                                        .cornerRadius(15)
+                                }
+                            }
+                            .padding(.horizontal)
                         }
+                        .frame(width: 361, height: 59)
                     }
+                    .padding()
                 }
-                .frame(width: 361, height: 59)
+                .frame(width: 361)
+                .background(
+                    Color.grayQuaternary2
+                )
+                .cornerRadius(30)
+                .shadow(color: Color.black.opacity(0.2), radius: 9, x: 0, y: 5)
+                .padding(.bottom)
                 
-                Divider()
-                    .padding(.bottom)
+                
                 
                 
                 Image(systemName: "cloud.sun.fill")

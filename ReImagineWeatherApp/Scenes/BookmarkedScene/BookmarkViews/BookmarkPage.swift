@@ -10,11 +10,9 @@ import MapKit
 
 struct BookmarkPage: View {
     
-    @ObservedObject var calendarInfo = CalendarInformation()
-    
     var body: some View {
         VStack {
-            VStack (spacing: 15) {
+            VStack {
                 HStack {
                     Text("Weather")
                         .font(.largeTitle)
@@ -23,24 +21,18 @@ struct BookmarkPage: View {
                 }
                 .padding(.bottom)
                 
-                ScrollView(.horizontal) {
-                    HStack(spacing: 24) {
-                        
-                        ForEach(calendarInfo.dates, id: \.self) { date in
-                            let daySymbol = DateFormatter().shortWeekdaySymbols[Calendar.current.component(.weekday, from: date) - 1].prefix(1)
-                            let day = Calendar.current.component(.day, from: date)
-                            let isSelected = Calendar.current.isDate(calendarInfo.selectedDate, inSameDayAs: date)
-                            let isPast = date < calendarInfo.startOfDay
-                            
-                            DatePickerComponent(daySymbol: String(daySymbol), day: day, isPast: isPast, selected: isSelected)
-                                .onTapGesture {
-                                    calendarInfo.select(date: date)
-                                }
-                        }
-                    }
+                ZStack {
+                    CalendarSelectionView()
+                        .padding(.top)
                 }
-                .frame(width: 361, height: 59)
+                .frame(width: 361)
+                .background(
+                    Color.grayQuaternary2
+                )
+                .cornerRadius(30)
+                .shadow(color: Color.black.opacity(0.2), radius: 9, x: 0, y: 5)
                 .padding(.bottom)
+                
                 
                 ScrollView {
                     HStack {
@@ -67,7 +59,7 @@ struct BookmarkPage: View {
                     }
                     .padding(.top, 10)
                     .padding(.bottom)
-                    .foregroundColor(.black)
+                    .foregroundColor(.primary)
                     
                     VStack (spacing: 20) {
                         ForEach(0..<8) { _ in
@@ -98,6 +90,11 @@ class CalendarInformation: ObservableObject {
             calendar.date(byAdding: .day, value: dayOffset, to: startOfDay)
         }
     }
+    
+    //dummy safetyStatusData
+    var safetyStatus: [Color] {
+        [SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor]
+    }
     @Published var selectedDate: Date
     
     init() {
@@ -114,4 +111,31 @@ class CalendarInformation: ObservableObject {
                 selectedDate = date
             }
         }
+}
+
+struct CalendarSelectionView: View {
+    @ObservedObject var calendarInfo = CalendarInformation()
+    
+    var body: some View {
+        ScrollView(.horizontal) {
+            HStack(spacing: 24) {
+                
+                ForEach(calendarInfo.dates.indices, id: \.self) { index in
+                    let date = calendarInfo.dates[index]
+                    let daySymbol = DateFormatter().shortWeekdaySymbols[Calendar.current.component(.weekday, from: date) - 1].prefix(1)
+                    let day = Calendar.current.component(.day, from: date)
+                    let isSelected = Calendar.current.isDate(calendarInfo.selectedDate, inSameDayAs: date)
+                    let isPast = date < calendarInfo.startOfDay
+                    let safetyStatusColor = calendarInfo.safetyStatus[index]
+                    DatePickerComponent(daySymbol: String(daySymbol), day: day, isPast: isPast, selected: isSelected, safetyStatusColor: safetyStatusColor)
+                        .onTapGesture {
+                            calendarInfo.select(date: date)
+                        }
+                }
+            }
+            .padding(.horizontal)
+        }
+        .frame(width: 361, height: 61)
+        .padding(.bottom)
+    }
 }
