@@ -18,6 +18,7 @@ struct WeatherDetailPage: View {
                     .font(.footnote)
                     .foregroundStyle(.arsenic)
                     .padding(.top, -10)
+                    .padding(.bottom)
                 
                 
                 ScrollView(.horizontal) {
