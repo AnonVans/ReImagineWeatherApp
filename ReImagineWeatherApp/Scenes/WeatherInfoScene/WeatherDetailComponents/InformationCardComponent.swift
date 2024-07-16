@@ -26,6 +26,26 @@ struct InformationCardComponent: View {
                             Text(data.infoDetailType)
                                 .font(.subheadline)
                                 .fontWeight(.bold)
+                        } else if infoType == .SpecialData {
+                            
+                            switch data.infoDetailName {
+                            case "Safe" : 
+                                Circle()
+                                    .frame(width: 20)
+                                    .foregroundColor(SafetyInformation().safe.CircleColor)
+                                    .shadow(radius: 2)
+                                case "Caution" : 
+                                Circle()
+                                    .frame(width: 20)
+                                    .foregroundColor(SafetyInformation().caution.CircleColor)
+                                    .shadow(radius: 2)
+                                default :
+                                Circle()
+                                    .frame(width: 20)
+                                    .foregroundColor(SafetyInformation().unsafe.CircleColor)
+                                    .shadow(radius: 2)
+                            }
+                            
                         } else {
                             Image(systemName: data.infoDetailType)
                         }
@@ -38,7 +58,7 @@ struct InformationCardComponent: View {
                     if infoType == .SpecialData {
                         VStack(alignment: .center) {
                             switch data.infoDetailName {
-                                case "Safe" : SafetyDetailCard(details: SafetyInformation().save)
+                                case "Safe" : SafetyDetailCard(details: SafetyInformation().safe)
                                 case "Caution" : SafetyDetailCard(details: SafetyInformation().caution)
                                 default : SafetyDetailCard(details: SafetyInformation().unsafe)
                             }

@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SafetyDetailCard: View {
-    var details: (UV: String, AQ: String, Weather: String)
+    var details: (UV: String, AQ: String, Weather: String, CircleColor: Color)
     
     var body: some View {
         HStack {
@@ -27,11 +27,13 @@ struct SafetyDetailCard: View {
                 
                 Spacer()
             }
-            .frame(width: 95, height: 72)
+            .frame(width: 95)
             .background(
                 Color.grayTertiary
             )
             .cornerRadius(20)
+            
+            Spacer()
             
             VStack (alignment: .center) {
                 Spacer()
@@ -48,11 +50,12 @@ struct SafetyDetailCard: View {
                 
                 Spacer()
             }
-            .frame(width: 95, height: 72)
+            .frame(width: 95)
             .background(
                 Color.grayTertiary
             )
             .cornerRadius(20)
+            Spacer()
             
             VStack (alignment: .center) {
                 Spacer()
@@ -69,7 +72,7 @@ struct SafetyDetailCard: View {
                 
                 Spacer()
             }
-            .frame(width: 95, height: 72)
+            .frame(width: 95)
             .background(
                 Color.grayTertiary
             )
@@ -79,5 +82,5 @@ struct SafetyDetailCard: View {
 }
 
 #Preview {
-    SafetyDetailCard(details: ("Low", "Low", "Cloudy\nPartly Cloudy"))
+    SafetyDetailCard(details: ("Low", "Low", "Cloudy\nPartly Cloudy", .mauvelousCircle))
 }

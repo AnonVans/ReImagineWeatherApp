@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct DatePickerComponent: View {
+    let daySymbol: String
+    let day: Int
+    
     var body: some View {
         VStack(spacing: 10) {
-            Text("F")
+            Text(daySymbol)
                 .font(.caption2)
                 .shadow(radius: 10)
             
@@ -18,9 +21,9 @@ struct DatePickerComponent: View {
                 RoundedRectangle(cornerRadius: 10)
                     .frame(width: 22, height: 26)
                     .foregroundColor(.grayTertiary)
-                .shadow(radius: 10)
+                    .shadow(radius: 10)
                 
-                Text("12")
+                Text("\(day)")
                     .font(.footnote)
             }
             
@@ -28,12 +31,7 @@ struct DatePickerComponent: View {
                 .foregroundColor(Color.paleGreenCircle)
                 .frame(width: 8)
                 .shadow(radius: 10)
-            
         }
         .frame(width: 22, height: 80)
     }
-}
-
-#Preview {
-    DatePickerComponent()
 }

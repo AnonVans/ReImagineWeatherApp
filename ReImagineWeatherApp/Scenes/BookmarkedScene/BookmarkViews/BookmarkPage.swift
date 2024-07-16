@@ -9,9 +9,24 @@ import SwiftUI
 import MapKit
 
 struct BookmarkPage: View {
+    
+    let startOfDay: Date
+    var dates: [Date] {
+        let calendar = Calendar.current
+        return (0..<11).compactMap { dayOffset in
+            calendar.date(byAdding: .day, value: dayOffset, to: startOfDay)
+        }
+    }
+    
+    init() {
+        let calendar = Calendar.current
+        let now = Date()
+        self.startOfDay = calendar.startOfDay(for: now)
+    }
+    
     var body: some View {
         VStack {
-            VStack (spacing: 15){
+            VStack (spacing: 15) {
                 HStack {
                     Text("Weather")
                         .font(.largeTitle)
@@ -20,14 +35,13 @@ struct BookmarkPage: View {
                 }
                 .padding(.bottom)
                 
-                
                 ScrollView(.horizontal) {
-                    HStack(spacing: 15) {
-                        ForEach(0..<20) { _ in
-                            Rectangle()
-                                .frame(width: 22)
-                                .foregroundColor(.grayTertiary)
-                                .cornerRadius(10)
+                    HStack(spacing: 24) {
+                        ForEach(dates, id: \.self) { date in
+                            let daySymbol = DateFormatter().shortWeekdaySymbols[Calendar.current.component(.weekday, from: date) - 1].prefix(1)
+                            let day = Calendar.current.component(.day, from: date)
+                            
+                            DatePickerComponent(daySymbol: String(daySymbol), day: day)
                         }
                     }
                 }
@@ -61,8 +75,7 @@ struct BookmarkPage: View {
                     .padding(.bottom)
                     .foregroundColor(.black)
                     
-                    
-                    VStack (spacing: 20){
+                    VStack (spacing: 20) {
                         ForEach(0..<8) { _ in
                             Rectangle()
                                 .frame(width: 361, height: 115)
