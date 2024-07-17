@@ -22,7 +22,8 @@ struct SearchLocationView: View {
                            searchLocation()
                            
                        })
-                       .padding()
+                       .padding(.leading, 40)
+                       .padding(.trailing, 20)
                        .textFieldStyle(RoundedBorderTextFieldStyle())
                        .overlay(
                         Button(action: searchLocation){
@@ -32,7 +33,7 @@ struct SearchLocationView: View {
                                      }
                         }
                            
-                           .padding(.horizontal, 22)
+                           .padding()
                            .foregroundColor(.gray)
                        )
                        
