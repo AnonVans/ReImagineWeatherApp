@@ -1,14 +1,14 @@
-////
-////  WeatherCardComponent.swift
-////  ReImagineWeatherApp
-////
-////  Created by Stevans Calvin Candra on 16/07/24.
-////
+//////
+//////  WeatherCardComponent.swift
+//////  ReImagineWeatherApp
+//////
+//////  Created by Stevans Calvin Candra on 16/07/24.
+//////
 //
 //import SwiftUI
 //
 //struct WeatherCardComponent: View {
-//    var weather: AppWeather
+////    var weather: AppWeather
 //    
 //    var body: some View {
 //        
@@ -18,7 +18,8 @@
 //                    HStack {
 //                        Text(weather.location)
 //                            .font(.title3)
-//                        .bold()
+//                            .bold()
+//                        
 //                        Spacer()
 //                    }
 //                    
@@ -27,6 +28,7 @@
 //                            .font(.footnote)
 //                            .foregroundStyle(.arsenic)
 //                            .opacity(0.8)
+//                        
 //                        Spacer()
 //                    }
 //                    
@@ -36,6 +38,7 @@
 //                        Text(weather.time)
 //                        Text("UVI: \(weather.UVI)")
 //                        Text("AQI: \(weather.AQI)")
+//                        
 //                        Spacer()
 //                    }
 //                    .font(.caption)
@@ -47,18 +50,18 @@
 //                
 //                VStack {
 //                    switch weather.type {
-//                    case "rainThunderLight":
-//                        Image(weather.image)
-//                            .resizable()
-//                            .scaledToFit()
-//                            .shadow(radius: 3)
-//                    default:
-//                        Image(systemName: weather.image)
-//                            .symbolRenderingMode(weather.renderingMode)
-//                            .resizable()
-//                            .scaledToFit()
-//                            .foregroundStyle(weather.symbolColor[0],weather.symbolColor[1])
-//                            .shadow(radius: 3)
+//                        case "rainThunderLight":
+//                            Image(weather.image)
+//                                .resizable()
+//                                .scaledToFit()
+//                                .shadow(radius: 3)
+//                        default:
+//                            Image(systemName: weather.image)
+//                                .symbolRenderingMode(weather.renderingMode)
+//                                .resizable()
+//                                .scaledToFit()
+//                                .foregroundStyle(weather.symbolColor[0],weather.symbolColor[1])
+//                                .shadow(radius: 3)
 //                    }
 //                    
 //                    ZStack {

@@ -45,3 +45,7 @@ struct DatePickerComponent: View {
         .frame(width: 22, height: 80)
     }
 }
+
+//#Preview {
+//    DatePickerComponent(daySymbol: <#T##String#>, day: <#T##Int#>, isPast: <#T##Bool#>, selected: <#T##Bool#>, safetyStatusColor: <#T##Color#>)
+//}

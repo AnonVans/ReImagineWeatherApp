@@ -57,5 +57,5 @@ struct InformationDetailView: View {
 }
 
 #Preview {
-    InformationDetailView(infoType: .SpecialData, data: SafetyInformation())
+    InformationDetailView(infoType: .ImageData, data: WeatherConditionInformation())
 }

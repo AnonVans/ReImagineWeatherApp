@@ -7,6 +7,7 @@
 
 import SwiftUI
 
+// information in the weather detail page
 struct InformationDetailCard: View {
     
 //    var status: Status

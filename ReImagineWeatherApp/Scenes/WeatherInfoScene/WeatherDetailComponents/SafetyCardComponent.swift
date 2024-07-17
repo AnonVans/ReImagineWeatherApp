@@ -7,9 +7,25 @@
 
 import SwiftUI
 
+//summarize information from all the weather aspect
 struct SafetyCardComponent: View {
+    var content: String = "Conditions require precautions. UV index is moderate. AQI is unhealthy for sensitive groups"
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Text(content)
+            .foregroundStyle(.mauvelousText)
+            .padding()
+            .font(.system(size: 16))
+            .multilineTextAlignment(.center)
+            .frame(width: 361, height: 95)
+            .background {
+                Color.mauvelous
+                    .clipShape(
+                        RoundedRectangle(cornerRadius: 20)
+                    )
+                
+            }
+        
     }
 }
 

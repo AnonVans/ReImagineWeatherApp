@@ -82,39 +82,8 @@ struct BookmarkPage: View {
     BookmarkPage()
 }
 
-class CalendarInformation: ObservableObject {
-    let startOfDay: Date
-    var dates: [Date] {
-        let calendar = Calendar.current
-        return (0..<11).compactMap { dayOffset in
-            calendar.date(byAdding: .day, value: dayOffset, to: startOfDay)
-        }
-    }
-    
-    //dummy safetyStatusData
-    var safetyStatus: [Color] {
-        [SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor]
-    }
-    @Published var selectedDate: Date
-    
-    init() {
-        let calendar = Calendar.current
-        let now = Date()
-        self.startOfDay = calendar.startOfDay(for: now)
-        self.selectedDate = self.startOfDay
-    }
-    
-    func select(date: Date) {
-            if Calendar.current.isDate(selectedDate, inSameDayAs: date) {
-                selectedDate = Calendar.current.startOfDay(for: Date())
-            } else {
-                selectedDate = date
-            }
-        }
-}
-
 struct CalendarSelectionView: View {
-    @ObservedObject var calendarInfo = CalendarInformation()
+    @ObservedObject var calendarInfo = DatePickerViewModel()
     
     var body: some View {
         ScrollView(.horizontal) {
@@ -127,6 +96,7 @@ struct CalendarSelectionView: View {
                     let isSelected = Calendar.current.isDate(calendarInfo.selectedDate, inSameDayAs: date)
                     let isPast = date < calendarInfo.startOfDay
                     let safetyStatusColor = calendarInfo.safetyStatus[index]
+                    
                     DatePickerComponent(daySymbol: String(daySymbol), day: day, isPast: isPast, selected: isSelected, safetyStatusColor: safetyStatusColor)
                         .onTapGesture {
                             calendarInfo.select(date: date)
@@ -137,5 +107,10 @@ struct CalendarSelectionView: View {
         }
         .frame(width: 361, height: 61)
         .padding(.bottom)
+        .onAppear {
+            Task {
+                await WeatherServiceManager.shared.fetchSpecificWeather(location: (-6.301537874035788, 106.65296135054798), date: Calendar(identifier: .gregorian).startOfDay(for: Date()))
+            }
+        }
     }
 }

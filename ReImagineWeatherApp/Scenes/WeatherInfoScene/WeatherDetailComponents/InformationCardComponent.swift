@@ -26,30 +26,10 @@ struct InformationCardComponent: View {
                             Text(data.infoDetailType)
                                 .font(.subheadline)
                                 .fontWeight(.bold)
-                        } else if infoType == .SpecialData {
-                            
-                            switch data.infoDetailName {
-                            case "Safe" : 
-                                Circle()
-                                    .frame(width: 20)
-                                    .foregroundColor(SafetyInformation().safe.CircleColor)
-                                    .shadow(radius: 2)
-                                case "Caution" : 
-                                Circle()
-                                    .frame(width: 20)
-                                    .foregroundColor(SafetyInformation().caution.CircleColor)
-                                    .shadow(radius: 2)
-                                default :
-                                Circle()
-                                    .frame(width: 20)
-                                    .foregroundColor(SafetyInformation().unsafe.CircleColor)
-                                    .shadow(radius: 2)
-                            }
-                            
                         } else {
                             Image(systemName: data.infoDetailType)
+                                .statusTypeStyling(data.infoDetailName)
                         }
-                            
                     }
                     Text(data.infoDetailDescription)
                         .foregroundColor(.primary)
@@ -81,5 +61,5 @@ struct InformationCardComponent: View {
 }
 
 #Preview {
-    InformationCardComponent(infoType: .TextData, data: InfoDetailCard.init(infoDetailName: "Title", infoDetailType: "type", infoDetailDescription: "desc"))
+    InformationCardComponent(infoType: .SpecialData, data: InfoDetailCard.init(infoDetailName: "Title", infoDetailType: "circle.fill", infoDetailDescription: "desc"))
 }

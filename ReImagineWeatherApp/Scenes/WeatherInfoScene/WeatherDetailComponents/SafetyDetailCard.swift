@@ -12,14 +12,14 @@ struct SafetyDetailCard: View {
     
     var body: some View {
         HStack {
+            Spacer()
+            
             VStack (alignment: .center) {
-                Spacer()
-                
                 Text("UVI")
                     .font(.footnote)
                     .bold()
-                
-                Spacer()
+                    .padding(.top, 12.5)
+                    .padding(.bottom, 5)
                 
                 Text(details.UV)
                     .font(.caption2)
@@ -27,7 +27,7 @@ struct SafetyDetailCard: View {
                 
                 Spacer()
             }
-            .frame(width: 95)
+            .frame(width: 95, height: 89)
             .background(
                 Color.grayTertiary
             )
@@ -36,13 +36,11 @@ struct SafetyDetailCard: View {
             Spacer()
             
             VStack (alignment: .center) {
-                Spacer()
-                
                 Text("AQI")
                     .font(.footnote)
                     .bold()
-                
-                Spacer()
+                    .padding(.top, 12.5)
+                    .padding(.bottom, 5)
                 
                 Text(details.AQ)
                     .font(.caption2)
@@ -50,7 +48,7 @@ struct SafetyDetailCard: View {
                 
                 Spacer()
             }
-            .frame(width: 95)
+            .frame(width: 95, height: 89)
             .background(
                 Color.grayTertiary
             )
@@ -58,13 +56,11 @@ struct SafetyDetailCard: View {
             Spacer()
             
             VStack (alignment: .center) {
-                Spacer()
-                
                 Text("Weather")
                     .font(.footnote)
                     .bold()
-                
-                Spacer()
+                    .padding(.top, 12.5)
+                    .padding(.bottom, 5)
                 
                 Text(details.Weather)
                     .font(.caption2)
@@ -72,11 +68,13 @@ struct SafetyDetailCard: View {
                 
                 Spacer()
             }
-            .frame(width: 95)
+            .frame(width: 95, height: 89)
             .background(
                 Color.grayTertiary
             )
             .cornerRadius(20)
+            
+            Spacer()
         }
     }
 }
