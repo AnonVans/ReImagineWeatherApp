@@ -41,6 +41,7 @@
 		C8C7FD622C47512400A43A4B /* DatePickerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C7FD612C47512400A43A4B /* DatePickerViewModel.swift */; };
 		C8C7FD642C47670300A43A4B /* WeatherDetailBackground.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C7FD632C47670300A43A4B /* WeatherDetailBackground.swift */; };
 		C8C7FD672C478B1B00A43A4B /* SafetyInformationProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C7FD662C478B1B00A43A4B /* SafetyInformationProtocol.swift */; };
+		C8C7FD6C2C47C9C600A43A4B /* WeatherEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8C7FD6B2C47C9C600A43A4B /* WeatherEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -80,6 +81,7 @@
 		C8C7FD632C47670300A43A4B /* WeatherDetailBackground.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherDetailBackground.swift; sourceTree = "<group>"; };
 		C8C7FD662C478B1B00A43A4B /* SafetyInformationProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafetyInformationProtocol.swift; sourceTree = "<group>"; };
 		C8C7FD6A2C47BE0400A43A4B /* ReImagineWeatherApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = ReImagineWeatherApp.entitlements; sourceTree = "<group>"; };
+		C8C7FD6B2C47C9C600A43A4B /* WeatherEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -266,6 +268,7 @@
 			isa = PBXGroup;
 			children = (
 				C8C7FD532C4626C400A43A4B /* WeatherObject.swift */,
+				C8C7FD6B2C47C9C600A43A4B /* WeatherEnum.swift */,
 			);
 			path = WeatherObjects;
 			sourceTree = "<group>";
@@ -391,6 +394,7 @@
 				C8B700462C3FC73C00822F09 /* APServiceManager.swift in Sources */,
 				C8C7FD592C462E5400A43A4B /* RecentSearchDataModel.swift in Sources */,
 				C8C7FD4D2C461C7400A43A4B /* SafetyInformation.swift in Sources */,
+				C8C7FD6C2C47C9C600A43A4B /* WeatherEnum.swift in Sources */,
 				C8C7FD602C4657D000A43A4B /* WeatherDetailViewModel.swift in Sources */,
 				C8C7FD3B2C45B5A800A43A4B /* InformationDetailView.swift in Sources */,
 				C8C7FD3F2C45B69800A43A4B /* APIKeyHolder.swift in Sources */,
