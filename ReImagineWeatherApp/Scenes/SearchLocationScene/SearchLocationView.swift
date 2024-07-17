@@ -16,36 +16,22 @@ struct SearchLocationView: View {
 
     var body: some View {
 
-        NavigationView {
+        NavigationStack {
                    VStack {
-                       TextField("", text: $inputQuery, onCommit: {
-                           searchLocation()
-                           
-                       })
-                       .padding(.leading, 40)
-                       .padding(.trailing, 20)
-                       .textFieldStyle(RoundedBorderTextFieldStyle())
-                       .overlay(
-                        Button(action: searchLocation){
-                            HStack {
-                                                           Image(systemName: "magnifyingglass")
-                                                           Spacer()
-                                     }
-                        }
-                           
-                           .padding()
-                           .foregroundColor(.gray)
-                       )
-                       
-                       
-                       List(searchResults, id: \.self) { result in
-                           Button(action: {
-                               selectLocation(result)
-                           }) {
-                               Text(result)
+                       List {
+                           ForEach(searchResults, id: \.self) { result in
+                               Button(action: {
+                                   selectLocation(result)
+                               }) {
+                                   Text(result)
+                               }
                            }
                        }
-
+                       .searchable(text: $inputQuery)
+                       .onChange(of: inputQuery) { newValue in
+                           searchLocation()
+                       }
+                       
                        if let coordinates = viewModel.coordinatesFromAddress {
                            Text("Latitude: \(coordinates.latitude)")
                            Text("Longitude: \(coordinates.longitude)")
@@ -57,12 +43,15 @@ struct SearchLocationView: View {
 
                        Spacer()
                    }
-                   .navigationBarTitle("Add Place", displayMode: .inline)
+                   .navigationBarTitle("Add Place")
+                   .navigationBarTitleDisplayMode(.inline)
                    .navigationBarItems(leading: Button(action: {
                        // Action for back button
                    }) {
-                       Image(systemName: "chevron.left")
-                       Text("Back")
+                       HStack {
+                                          Image(systemName: "chevron.left")
+                                          Text("Back")
+                                      }
                    })
                }
            }
