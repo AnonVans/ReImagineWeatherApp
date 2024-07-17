@@ -25,7 +25,6 @@ struct SafetyCardComponent: View {
                     .clipShape(
                         RoundedRectangle(cornerRadius: 20)
                     )
-                
             }
     }
 }

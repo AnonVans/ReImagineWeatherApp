@@ -7,10 +7,11 @@
 import SwiftUI
 
 struct DatePickerComponent: View {
+    @State var selected: Bool
+
     let daySymbol: String
     let day: Int
     let isPast: Bool
-    var selected: Bool
     var safetyStatusColor: Color
     
     var body: some View {
@@ -45,7 +46,3 @@ struct DatePickerComponent: View {
         .frame(width: 22, height: 80)
     }
 }
-
-//#Preview {
-//    DatePickerComponent(daySymbol: <#T##String#>, day: <#T##Int#>, isPast: <#T##Bool#>, selected: <#T##Bool#>, safetyStatusColor: <#T##Color#>)
-//}

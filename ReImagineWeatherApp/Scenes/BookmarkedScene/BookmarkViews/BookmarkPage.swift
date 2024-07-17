@@ -97,7 +97,7 @@ struct CalendarSelectionView: View {
                     let isPast = date < calendarInfo.startOfDay
                     let safetyStatusColor = calendarInfo.safetyStatus[index]
                     
-                    DatePickerComponent(daySymbol: String(daySymbol), day: day, isPast: isPast, selected: isSelected, safetyStatusColor: safetyStatusColor)
+                    DatePickerComponent(selected: isSelected, daySymbol: String(daySymbol), day: day, isPast: isPast, safetyStatusColor: safetyStatusColor)
                         .onTapGesture {
                             calendarInfo.select(date: date)
                         }

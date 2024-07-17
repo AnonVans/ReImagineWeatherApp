@@ -24,7 +24,7 @@ extension Image {
     var cautionStatus: some View {
         return self
                 .frame(width: 20)
-                .foregroundColor(.paleGoldenrodText)
+                .foregroundColor(.paleGoldenrodCircle)
                 .shadow(radius: 2)
     }
     
@@ -53,6 +53,24 @@ extension Image {
                 .foregroundColor(.clearNight)
     }
     
+    var clearDayCard: some View {
+        return self
+                .font(.system(size: 72))
+                .foregroundColor(.clearDay)
+    }
+    
+    var rainyCard: some View {
+        return self
+                .font(.system(size: 72))
+                .foregroundColor(.rainy)
+    }
+    
+    var clearNightCard: some View {
+        return self
+                .font(.system(size: 72))
+                .foregroundColor(.clearNight)
+    }
+    
     func statusTypeStyling(_ status: String) -> some View {
         switch status {
             case "Safe": return AnyView(safeStatus)
@@ -61,6 +79,15 @@ extension Image {
             case "Clear Day Weather Safety": return AnyView(clearDay)
             case "Rainy Weather Safety": return AnyView(rainy)
             case "Clear Night Weather Safety": return AnyView(clearNight)
+            default: return AnyView(defaultStyle)
+        }
+    }
+    
+    func cardTypeStyling(_ status: String) -> some View {
+        switch status {
+            case "ClearDay": return AnyView(clearDayCard)
+            case "Rainny": return AnyView(rainyCard)
+            case "ClearNight": return AnyView(clearNightCard)
             default: return AnyView(defaultStyle)
         }
     }

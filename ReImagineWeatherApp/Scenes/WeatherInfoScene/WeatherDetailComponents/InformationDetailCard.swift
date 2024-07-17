@@ -9,65 +9,51 @@ import SwiftUI
 
 // information in the weather detail page
 struct InformationDetailCard: View {
-    
-//    var status: Status
-//    var dataType: String
-//    var appWeather: AppWeather
+    var infoType: InfoType = .ImageData
+    var info: ComponentInfo = WeatherComponent().getInfoDetails(type: WeatherType.ClearNight.rawValue)
     
     var body: some View {
-        
-        VStack (alignment: .center, spacing: 10) {
-//            Text(dataType)
-            Text("Ini isi nya datatype")
-                .font(.footnote)
-                .bold()
-            VStack {
+        VStack {
+            HStack(alignment: .top) {
+                VStack(alignment: .leading, spacing: 4) {
+                    Text(info.componentTitle)
+                        .font(.system(size: 17))
+                        .bold()
+                    Text(info.componentDescription)
+                        .foregroundColor(.secondary)
+                        .font(.system(size: 10))
+                        .font(.subheadline)
+                }
+                .frame(width: 241)
+                .padding(.vertical)
+                .padding(.leading, 22.5)
+                .frame(width: 275)
                 
-                //ini ngambil information dari information model
-//                let informationModel = Information(id: 0, range: "", level: "", information: "", type: "")
-                    
-                Text("ini for each buat nampilin uvi/aqi/weather")
-//                switch dataType {
-//                case "UVI":
-//                    ForEach(appWeather.status.UVInformation, id: \.self) { info in
-//                                            Text(info)
-//                            .frame(width: 100)
-//                    }
-//                case "AQI":
-//                    ForEach(appWeather.status.AQIInformation, id: \.self) { info in
-//                                            Text(info)
-//                            .frame(width: 100)
-//                    }
-//                case "Weather":
-//                    ForEach(appWeather.status.weatherInformation, id: \.self) { info in
-//                        Text(info)
-//                            .frame(width: 100)
-//                    }
-//                default:
-//                    Text("Information not available")
-//                }
+                Spacer()
+                
+                HStack(alignment: .center) {
+                    if infoType == .TextData {
+                        Text("\(20)")
+                            .background(.grayTertiary)
+                            .font(.system(size: 32))
+                            .cornerRadius(30)
+                    } else {
+                        Image(systemName: info.componentImage)
+                            .cardTypeStyling(info.componentType)
+                    }
+                }
+                .frame(idealHeight: 105, maxHeight: 110)
+                .padding(.trailing, 15)
             }
-            .font(.caption2)
-            Spacer()
+            .padding(.horizontal)
+            .frame(maxWidth: 361, idealHeight: 109, maxHeight: 110)
+            .background(.invertPrimary)
+            .cornerRadius(20)
+            .shadow(radius: 4)
         }
-        .frame(width: 100, height: 90)
-        .padding(.top)
-//        .background(
-//            Color.grayTertiary
-//        )
-        .cornerRadius(20)
     }
 }
 
-//struct InformationDetailCard_Previews: PreviewProvider {
-//    static var previews: some View {
-//        let status = StatusSafe()
-//        let dataType = "UVI"
-//        let appWeather = SunnyLight(id: 1, location: "Location", city: "City", time: "12:00", UVI: 5, AQI: 50, status: status)
-//        return SafetyStatusDetailComponentView(status: status, dataType: dataType, appWeather: appWeather)
-//    }
-//}
-
-//#Preview {
-//    InformationDetailCard()
-//}
+#Preview {
+    InformationDetailCard()
+}

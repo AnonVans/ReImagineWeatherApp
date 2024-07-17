@@ -21,6 +21,7 @@ class DatePickerViewModel: ObservableObject {
     var safetyStatus: [Color] {
         [SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor]
     }
+    
     @Published var selectedDate: Date
     
     init() {

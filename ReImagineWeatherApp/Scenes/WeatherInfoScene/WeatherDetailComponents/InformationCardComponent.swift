@@ -61,5 +61,5 @@ struct InformationCardComponent: View {
 }
 
 #Preview {
-    InformationCardComponent(infoType: .SpecialData, data: InfoDetailCard.init(infoDetailName: "Title", infoDetailType: "circle.fill", infoDetailDescription: "desc"))
+    InformationCardComponent(infoType: .SpecialData, data: InfoDetailCard.init(infoDetailName: "Safe", infoDetailType: "circle.fill", infoDetailDescription: "desc"))
 }

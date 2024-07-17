@@ -49,6 +49,10 @@ enum AQIType: String {
     case VeryUnhealthy
     case Hazardous
     
+//    var cardTitle {
+//        
+//    }
+    
     var text: String {
         switch self {
         case .Good:
@@ -76,6 +80,12 @@ enum AQIType: String {
             default : return .Hazardous
         }
     }
+}
+
+enum WeatherType: String {
+    case ClearDay
+    case Rainny
+    case ClearNight
 }
 
 enum WeatherStatus {
