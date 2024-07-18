@@ -47,8 +47,10 @@ struct InformationDetailView: View {
                 Spacer()
             }
             
-            ForEach(data.getInfoDetails(), id: \.self) { detailData in
-                InformationCardComponent(infoType: infoType, data: detailData)
+            VStack(spacing: 25) {
+                ForEach(data.getInfoDetails(), id: \.self) { detailData in
+                    InformationCardComponent(infoType: infoType, data: detailData)
+                }
             }
         }
         .ignoresSafeArea()

@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct WeatherDetailBackground: View {
-    @State var startColor = Color.cream
-    @State var endColor = Color.skyBlue
+    @State var startColor: Color
+    @State var endColor: Color
     
     var body: some View {
         LinearGradient(
@@ -24,5 +24,5 @@ struct WeatherDetailBackground: View {
 }
 
 #Preview {
-    WeatherDetailBackground()
+    WeatherDetailBackground(startColor: .cream, endColor: .skyBlue)
 }

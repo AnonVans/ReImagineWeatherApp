@@ -20,17 +20,17 @@ struct AQIComponent: ComponentsProtocol {
                 componentDescription: String(localized: "Air quality is acceptable. However, there may be risk for unusually sensitive people. Consider making outdoor activities shorter if you’re unusually sensitive to particle pollution."),
                 componentImage: "",
                 componentType: ""),
-            "UnhealtyPartly": ComponentInfo(
+            "UnhealthyPartly": ComponentInfo(
                 componentTitle: String(localized: "Sensitive Air Quality"),
                 componentDescription: String(localized: "Sensitive groups (children, elderly, and those with respiratory issues) should reduce outdoor activities. Everyone else can enjoy but wear a mask if exerting themselves."),
                 componentImage: "",
                 componentType: ""),
-            "Unhealty": ComponentInfo(
+            "Unhealthy": ComponentInfo(
                 componentTitle: String(localized: "Unhealthy Air Quality"),
                 componentDescription: String(localized: "Limit outdoor activities. Everyone should consider wearing masks to reduce exposure."),
                 componentImage: "",
                 componentType: ""),
-            "VeryUnhealty": ComponentInfo(
+            "VeryUnhealthy": ComponentInfo(
                 componentTitle: String(localized: "Very Unhealthy Air Quality"),
                 componentDescription: String(localized: "Avoid outdoor activities. Everyone should wear masks if outside and limit exposure to air pollution."),
                 componentImage: "",

@@ -9,6 +9,7 @@ import SwiftUI
 import MapKit
 
 struct BookmarkPage: View {
+    @State var date = DatePickerViewModel().resetDate(date: Date.now)
     
     var body: some View {
         VStack {
@@ -22,7 +23,7 @@ struct BookmarkPage: View {
                 .padding(.bottom)
                 
                 ZStack {
-                    CalendarSelectionView()
+                    CalendarSelectionView(selectedDay: $date)
                         .padding(.top)
                 }
                 .frame(width: 361)
@@ -80,37 +81,4 @@ struct BookmarkPage: View {
 
 #Preview {
     BookmarkPage()
-}
-
-struct CalendarSelectionView: View {
-    @ObservedObject var calendarInfo = DatePickerViewModel()
-    
-    var body: some View {
-        ScrollView(.horizontal) {
-            HStack(spacing: 24) {
-                
-                ForEach(calendarInfo.dates.indices, id: \.self) { index in
-                    let date = calendarInfo.dates[index]
-                    let daySymbol = DateFormatter().shortWeekdaySymbols[Calendar.current.component(.weekday, from: date) - 1].prefix(1)
-                    let day = Calendar.current.component(.day, from: date)
-                    let isSelected = Calendar.current.isDate(calendarInfo.selectedDate, inSameDayAs: date)
-                    let isPast = date < calendarInfo.startOfDay
-                    let safetyStatusColor = calendarInfo.safetyStatus[index]
-                    
-                    DatePickerComponent(selected: isSelected, daySymbol: String(daySymbol), day: day, isPast: isPast, safetyStatusColor: safetyStatusColor)
-                        .onTapGesture {
-                            calendarInfo.select(date: date)
-                        }
-                }
-            }
-            .padding(.horizontal)
-        }
-        .frame(width: 361, height: 61)
-        .padding(.bottom)
-        .onAppear {
-            Task {
-                await WeatherServiceManager.shared.fetchSpecificWeather(location: (-6.301537874035788, 106.65296135054798), date: Calendar(identifier: .gregorian).startOfDay(for: Date()))
-            }
-        }
-    }
 }

@@ -7,12 +7,13 @@
 import SwiftUI
 
 struct DatePickerComponent: View {
-    @State var selected: Bool
-
-    let daySymbol: String
-    let day: Int
-    let isPast: Bool
+    var selected: Date
+    var daySymbol: String
+    var day: Date
+    var isPast: Bool
     var safetyStatusColor: Color
+    
+    var calendarVM = DatePickerViewModel()
     
     var body: some View {
         VStack(spacing: 10) {
@@ -22,18 +23,13 @@ struct DatePickerComponent: View {
                 .foregroundColor(isPast ? .gray : .primary)
             
             ZStack {
-                switch selected {
-                case true:
+                if calendarVM.checkIsSelected(selected: selected, check: day) {
                     RoundedRectangle(cornerRadius: 10)
                         .foregroundColor(.grayTertiary)
-                    Text("\(day)")
-                        .font(.footnote)
-                        .foregroundColor(isPast ? .gray : .primary)
-                default:
-                    Text("\(day)")
-                        .font(.footnote)
-                        .foregroundColor(isPast ? .gray : .primary)
                 }
+                Text(day.formatAsAbbreviatedDay())
+                    .font(.footnote)
+                    .foregroundColor(isPast ? .gray : .primary)
             }
             .frame(width: 22, height: 26)
             .shadow(radius: 4.5)

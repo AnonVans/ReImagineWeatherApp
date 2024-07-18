@@ -100,6 +100,12 @@ extension Date {
         return Int(dateFormatter.string(from: self))!
     }
     
+    func formatAsDay() -> Int {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "d"
+        return Int(dateFormatter.string(from: self))!
+    }
+    
     func formatAs24HourTimeNow() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "HH.mm"

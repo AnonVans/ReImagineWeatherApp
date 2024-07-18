@@ -37,7 +37,7 @@ class WeatherServiceManager {
         let condition = currWeather.condition.rawValue
         
         var night: Bool {
-            if date.formatAsHour() > 18 {
+            if date.formatAsHour() >= 18 && date.formatAsHour() <= 4  {
                 return true
             }
             
@@ -108,16 +108,19 @@ class WeatherServiceManager {
         for weather in weathers! {
             if weather.date == dt {
                 weatherData = weather
-                print("\(weather.date) || \(dt)")
+//                print("\(weather.date) || \(dt)")
             }
         }
         
+        let date = weatherData!.date
         let uv = weatherData!.uvIndex.value
         let temp = Int(weatherData!.temperature.value)
-        let condition = weatherData!.condition.rawValue
+        let condition = weatherData!.condition.description
         
+//        print(date.formatAsHour())
+
         var night: Bool {
-            if dt.formatAsHour() > 18 {
+            if date.formatAsHour() >= 18 || date.formatAsHour() <= 4  {
                 return true
             }
             
@@ -128,49 +131,55 @@ class WeatherServiceManager {
             case .cloudy, .mostlyCloudy, .partlyCloudy:
                 if night {
                     let weatherObject = CloudyNight()
-                    weatherObject.dateTime = dt
+                    weatherObject.dateTime = date
                     weatherObject.UVI = uv
                     weatherObject.temp = temp
                     weatherObject.condition = condition
+                    weatherObject.weatherType = "ClearNight"
                     return weatherObject
                 } else {
                     let weatherObject = CloudyNoon()
-                    weatherObject.dateTime = dt                    
+                    weatherObject.dateTime = date
                     weatherObject.UVI = uv
                     weatherObject.temp = temp
                     weatherObject.condition = condition
+                    weatherObject.weatherType = "ClearDay"
                     return weatherObject
                 }
             case .drizzle, .heavyRain, .rain, .sunShowers:
                 let weatherObject = RainnyDay()
-                weatherObject.dateTime = dt
+                weatherObject.dateTime = date
                 weatherObject.UVI = uv
                 weatherObject.temp = temp
                 weatherObject.condition = condition
+                weatherObject.weatherType = "Rainny"
                 return weatherObject
                 
             case .hurricane, .isolatedThunderstorms, .scatteredThunderstorms, .strongStorms, .thunderstorms, .tropicalStorm:
                 let weatherObject = StormyDay()
-                weatherObject.dateTime = dt
+                weatherObject.dateTime = date
                 weatherObject.UVI = uv
                 weatherObject.temp = temp
                 weatherObject.condition = condition
+                weatherObject.weatherType = "Rainny"
                 return weatherObject
                 
             default:
                 if night {
                     let weatherObject = ClearNight()
-                    weatherObject.dateTime = dt
+                    weatherObject.dateTime = date
                     weatherObject.UVI = uv
                     weatherObject.temp = temp
                     weatherObject.condition = condition
+                    weatherObject.weatherType = "ClearNight"
                     return weatherObject
                 } else {
                     let weatherObject = SunnyDay()
-                    weatherObject.dateTime = dt
+                    weatherObject.dateTime = date
                     weatherObject.UVI = uv
                     weatherObject.temp = temp
                     weatherObject.condition = condition
+                    weatherObject.weatherType = "ClearDay"
                     return weatherObject
                 }
             }

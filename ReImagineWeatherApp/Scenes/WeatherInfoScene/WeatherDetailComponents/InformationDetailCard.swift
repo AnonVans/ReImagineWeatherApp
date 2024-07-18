@@ -9,8 +9,9 @@ import SwiftUI
 
 // information in the weather detail page
 struct InformationDetailCard: View {
-    var infoType: InfoType = .ImageData
-    var info: ComponentInfo = WeatherComponent().getInfoDetails(type: WeatherType.ClearNight.rawValue)
+    var infoType: InfoType
+    var info: ComponentInfo
+    var value: Int
     
     var body: some View {
         VStack {
@@ -21,32 +22,25 @@ struct InformationDetailCard: View {
                         .bold()
                     Text(info.componentDescription)
                         .foregroundColor(.secondary)
-                        .font(.system(size: 10))
+                        .font(.system(size: 12))
                         .font(.subheadline)
                 }
-                .frame(width: 241)
-                .padding(.vertical)
-                .padding(.leading, 22.5)
-                .frame(width: 275)
                 
                 Spacer()
                 
-                HStack(alignment: .center) {
-                    if infoType == .TextData {
-                        Text("\(20)")
-                            .background(.grayTertiary)
-                            .font(.system(size: 32))
-                            .cornerRadius(30)
-                    } else {
-                        Image(systemName: info.componentImage)
-                            .cardTypeStyling(info.componentType)
-                    }
+                if infoType == .TextData {
+                    Text("\(value)")
+                        .frame(width: 72, height: 85)
+                        .background(.grayTertiary)
+                        .font(.system(size: 32))
+                        .cornerRadius(30)
+                        .padding(.leading, 8)
+                } else {
+                    Image(systemName: info.componentImage)
+                        .cardTypeStyling(info.componentType)
                 }
-                .frame(idealHeight: 105, maxHeight: 110)
-                .padding(.trailing, 15)
             }
-            .padding(.horizontal)
-            .frame(maxWidth: 361, idealHeight: 109, maxHeight: 110)
+            .padding()
             .background(.invertPrimary)
             .cornerRadius(20)
             .shadow(radius: 4)
@@ -55,5 +49,5 @@ struct InformationDetailCard: View {
 }
 
 #Preview {
-    InformationDetailCard()
+    InformationDetailCard(infoType: .TextData, info: WeatherComponent().getInfoDetails(type: WeatherType.ClearNight.rawValue), value: 20)
 }

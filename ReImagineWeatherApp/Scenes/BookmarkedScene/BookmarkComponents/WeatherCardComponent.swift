@@ -7,6 +7,7 @@
 //
 //import SwiftUI
 //
+//Unfinisih
 //struct WeatherCardComponent: View {
 ////    var weather: AppWeather
 //    

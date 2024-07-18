@@ -75,7 +75,7 @@ class APService: APServiceManagerProtocol {
         for data in aqdata {
             let aqiObj = calculateAQI(data.components)
             
-            print("lvl: \(aqiObj.lvl) || val: \(aqiObj.aqi)")
+//            print("lvl: \(aqiObj.lvl) || val: \(aqiObj.aqi)")
             
             self.apData.append(APDataModel(timeStamp: data.getTimeStamp(), level: aqiObj.lvl, aqi: aqiObj.aqi))
         }

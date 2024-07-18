@@ -14,26 +14,29 @@ struct InformationCardComponent: View {
     var body: some View {
         ZStack {
             HStack(alignment: .top) {
-
                 VStack(alignment: .leading, spacing: 20) {
-                    HStack (alignment: .center) {
-                        Text(data.infoDetailName)
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                        Spacer()
-                        
-                        if infoType == .TextData {
-                            Text(data.infoDetailType)
-                                .font(.subheadline)
+                    VStack(alignment: .leading, spacing: 10) {
+                        HStack (alignment: .center) {
+                            Text(data.infoDetailName)
+                                .font(.system(size: 17))
                                 .fontWeight(.bold)
-                        } else {
-                            Image(systemName: data.infoDetailType)
-                                .statusTypeStyling(data.infoDetailName)
+                            
+                            Spacer()
+                            
+                            if infoType == .TextData {
+                                Text(data.infoDetailType)
+                                    .font(.subheadline)
+                                    .fontWeight(.bold)
+                            } else {
+                                Image(systemName: data.infoDetailType)
+                                    .statusTypeStyling(data.infoDetailName)
+                            }
                         }
+                        Text(data.infoDetailDescription)
+                            .foregroundColor(.primary)
+                            .font(.system(size: 12))
                     }
-                    Text(data.infoDetailDescription)
-                        .foregroundColor(.primary)
-                        .font(.caption2)
+                    .padding(.horizontal, 10)
                     
                     if infoType == .SpecialData {
                         VStack(alignment: .center) {
@@ -53,9 +56,6 @@ struct InformationCardComponent: View {
             .padding()
             .background(Color.grayQuaternary)
             .cornerRadius(20)
-            
-            
-            
         }
     }
 }
