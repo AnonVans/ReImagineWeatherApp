@@ -13,85 +13,76 @@ struct SearchLocationView: View {
     @State private var inputAddress: String = ""
     @State private var errorMessage: String?
     @State private var searchResults: [String] = []
-
+    @State private var locData: (city: String, region: String) = ("", "")
+    
+    @State var presentSheet = false
+    @State var locCoor: (lat: Double, lon: Double) = (0.0, 0.0)
+    
     var body: some View {
-
-        NavigationView {
-                   VStack {
-                       TextField("", text: $inputQuery, onCommit: {
-                           searchLocation()
-                           
-                       })
-                       .padding()
-                       .textFieldStyle(RoundedBorderTextFieldStyle())
-                       .overlay(
-                        Button(action: searchLocation){
-                            HStack {
-                                Image(systemName: "magnifyingglass")
-                                Spacer()
+        NavigationStack {
+            VStack {
+                List {
+                    ForEach(searchResults, id: \.self) { result in
+                        Button(action: {
+                            searchLocationData()
+                            selectLocation(result)
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                presentSheet.toggle()
                             }
+                        }) {
+                            Text(result)
+                                .navigationDestination(isPresented: $presentSheet) {
+                                    WeatherDetailPage(
+                                        placeName: locData.city,
+                                        region: locData.region,
+                                        location: locCoor
+                                    )
+                                }
                         }
-                        
-                            .padding(.horizontal, 22)
-                            .foregroundColor(.gray)
-                       )
-                       
-                       
-                       List(searchResults, id: \.self) { result in
-                           Button(action: {
-                               selectLocation(result)
-                           }) {
-                               Text(result)
-                           }
-                       }
+                    }
+                }
+                .searchable(text: $inputQuery)
+                .onChange(of: inputQuery) { oldValue, newValue in
+                    searchLocation()
+                }
+                
+                Spacer()
+            }
+        }
+    }
+    
+    private func searchLocation() {
+        viewModel.searchLocations(query: inputQuery) { results in
+            DispatchQueue.main.async {
+                self.searchResults = results
+                self.errorMessage = results.isEmpty ? "No locations found." : nil
+            }
+        }
+    }
+    
+    private func searchLocationData() {
+        viewModel.getLocData(query: inputQuery) { results in
+            DispatchQueue.main.async {
+                self.locData = results
+            }
+        }
+    }
+    
+    private func selectLocation(_ location: String){
+        inputQuery = location
+        viewModel.fetchCoordinates(from: location) { coordinates in
+            if let coordinate = coordinates {
+                locCoor.lat = coordinate.latitude
+                locCoor.lon = coordinate.longitude
+            } else {
+                    errorMessage = "Failed to geocode address."
+            }
+        }
+    }
+}
 
-                       if let coordinates = viewModel.coordinatesFromAddress {
-                           Text("Latitude: \(coordinates.latitude)")
-                           Text("Longitude: \(coordinates.longitude)")
-                       }
-
-                       if let errorMessage = errorMessage {
-                           Text(errorMessage).foregroundColor(.red)
-                       }
-
-                       Spacer()
-                   }
-                   .navigationBarTitle("Add Place", displayMode: .inline)
-                   .navigationBarItems(leading: Button(action: {
-                       // Action for back button
-                   }) {
-                       Image(systemName: "chevron.left")
-                       Text("Back")
-                   })
-               }
-           }
-
-           private func searchLocation() {
-               viewModel.searchLocations(query: inputQuery) { results in
-                   DispatchQueue.main.async {
-                       self.searchResults = results
-                       self.errorMessage = results.isEmpty ? "No locations found." : nil
-                   }
-               }
-           }
-
-           private func selectLocation(_ location: String) {
-               inputQuery = location
-               viewModel.fetchCoordinates(from: location) { coordinates in
-                   if let coordinates = coordinates {
-                       DispatchQueue.main.async {
-                           viewModel.locationServiceManager.coordinatesFromAddress = coordinates
-                           errorMessage = nil
-                       }
-                   } else {
-                       errorMessage = "Failed to geocode address."
-                   }
-               }
-           }
-       }
-
-       struct SearchLocationView_Previews: PreviewProvider {
-           static var previews: some View {
-               SearchLocationView()
-           }
-       }
+struct SearchLocationView_Previews: PreviewProvider {
+    static var previews: some View {
+        SearchLocationView()
+    }
+}

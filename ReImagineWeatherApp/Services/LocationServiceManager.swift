@@ -78,9 +78,22 @@ class LocationServiceManager: NSObject, CLLocationManagerDelegate {
                 completion([])
             } else {
                 let locations = placemarks?.compactMap { placemark in
-                    return [placemark.name, placemark.locality, placemark.administrativeArea, placemark.country].compactMap { $0 }.joined(separator: ", ")
+                    return [placemark.name, placemark.administrativeArea, placemark.country].compactMap { $0 }.joined(separator: ", ")
                 } ?? []
                 completion(locations)
+            }
+        }
+    }
+    
+    func searchLocData(query: String, completion: @escaping ((city: String, region: String)) -> Void) {
+        let geocoder = CLGeocoder()
+        geocoder.geocodeAddressString(query) { placemarks, error in
+            if let error = error {
+                print("Error searching locations: \(error.localizedDescription)")
+                completion(("",""))
+            } else {
+                let location = (placemarks?.first?.name ?? "", placemarks?.first?.administrativeArea! ?? "")
+                completion(location)
             }
         }
     }

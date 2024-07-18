@@ -10,6 +10,11 @@ import Foundation
 struct AQIComponent: ComponentsProtocol {
     func populateData() -> [String : ComponentInfo] {
         let data: [String: ComponentInfo] = [
+            "NoData": ComponentInfo(
+                componentTitle: "",
+                componentDescription: "",
+                componentImage: "",
+                componentType: ""),
             "Good": ComponentInfo(
                 componentTitle: String(localized: "Good Air Quality"),
                 componentDescription: String(localized: "Enjoy the outdoors! Air quality is excellent for all activities."),

@@ -42,6 +42,7 @@ enum UVIType: String {
 }
 
 enum AQIType: String {
+    case NoData
     case Good
     case ModerateAQ
     case UnhealthyPartly
@@ -55,6 +56,8 @@ enum AQIType: String {
     
     var text: String {
         switch self {
+        case .NoData:
+            return ""
         case .Good:
             return String(localized: "Good")
         case .ModerateAQ:
@@ -72,6 +75,7 @@ enum AQIType: String {
     
     static func getType(_ index: Int) -> AQIType {
         switch true {
+            case index < 0 : return .NoData
             case (0...50).contains(index) : return .Good
             case (51...100).contains(index) : return .ModerateAQ
             case (101...150).contains(index) : return .UnhealthyPartly
@@ -128,7 +132,10 @@ enum WeatherStatus {
     
     func getStatusDescription(uv: UVIType, aqi: AQIType) -> String {
         let uvDesc = String(localized: "UV index is \(uv.text). ")
-        let aqiDesc = String(localized: "Air quality is \(aqi.text). ")
+        var aqiDesc = ""
+        if aqi != AQIType.NoData {
+            aqiDesc = String(localized: "Air quality is \(aqi.text). ")
+        }
         var weatherDesc: String {
             switch self {
             case .Safe:

@@ -70,7 +70,7 @@ class DatePickerViewModel: ObservableObject {
         let today = resetDate(date: dt)
         let calendar = Calendar(identifier: .gregorian)
         
-        for i in -1...10 {
+        for i in -1...9 {
             dates.append(calendar.date(byAdding: .day, value: i, to: today)!)
         }
         

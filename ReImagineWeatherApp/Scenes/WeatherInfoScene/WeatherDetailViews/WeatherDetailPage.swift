@@ -123,20 +123,22 @@ struct WeatherDetailPage: View {
                                         .ignoresSafeArea()
                                     }
                                     
-                                    InformationDetailCard(
-                                        infoType: .TextData,
-                                        info: AQIComponent().getInfoDetails(type: weatherDetailData.getAQILevel().rawValue),
-                                        value: weatherDetailData.AQI.aqi
-                                    )
-                                    .onTapGesture {
-                                        presentAQSheet = true
-                                    }
-                                    .sheet(isPresented: $presentAQSheet) {
-                                        InformationDetailView(
+                                    if weatherDetailData.AQI.aqi > -1 {
+                                        InformationDetailCard(
                                             infoType: .TextData,
-                                            data: AQInformation()
+                                            info: AQIComponent().getInfoDetails(type: weatherDetailData.getAQILevel().rawValue),
+                                            value: weatherDetailData.AQI.aqi
                                         )
-                                        .ignoresSafeArea()
+                                        .onTapGesture {
+                                            presentAQSheet = true
+                                        }
+                                        .sheet(isPresented: $presentAQSheet) {
+                                            InformationDetailView(
+                                                infoType: .TextData,
+                                                data: AQInformation()
+                                            )
+                                            .ignoresSafeArea()
+                                        }
                                     }
                                     
                                     InformationDetailCard(
@@ -167,6 +169,8 @@ struct WeatherDetailPage: View {
                 .frame(width: 361)
             }
             .onAppear {
+//                print(location)
+                
                 Task {
                     weatherDetailData = await weatherDetailVM.fetchHourWeatherData(
                         location: location,
@@ -197,5 +201,5 @@ struct WeatherDetailPage: View {
 }
 
 #Preview {
-    WeatherDetailPage(placeName: "Green Office Park", region: "Cisauk, Tangerang", location: (-6.301537874035788, 106.65296135054798))
+    WeatherDetailPage(placeName: "Green Office Park", region: "Cisauk, Tangerang", location: (-6.178356, 106.6301559))
 }

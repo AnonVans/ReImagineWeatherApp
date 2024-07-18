@@ -11,7 +11,7 @@ import SwiftUI
 struct ReImagineWeatherAppApp: App {
     var body: some Scene {
         WindowGroup {
-            BookmarkPage()
+            SearchLocationView()
         }
     }
 }
