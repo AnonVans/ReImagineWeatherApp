@@ -10,6 +10,7 @@ import MapKit
 
 struct BookmarkPage: View {
     @State var date = DatePickerViewModel().resetDate(date: Date.now)
+    var locations: [(lat: Double, lon: Double)]
     
     var body: some View {
         VStack {
@@ -23,7 +24,10 @@ struct BookmarkPage: View {
                 .padding(.bottom)
                 
                 ZStack {
-                    CalendarSelectionView(selectedDay: $date)
+                    CalendarSelectionView(
+                        locations: locations,
+                        selectedDay: $date
+                    )
                         .padding(.top)
                 }
                 .frame(width: 361)
@@ -34,51 +38,55 @@ struct BookmarkPage: View {
                 .shadow(color: Color.black.opacity(0.2), radius: 9, x: 0, y: 5)
                 .padding(.bottom)
                 
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        
+                    }, label: {
+                        HStack {
+                            Image(systemName: "plus")
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 15)
+                            Text("Add Place")
+                                .font(.subheadline)
+                                .padding(.leading, -5)
+                        }
+                        .padding(9)
+                        .background(
+                            Color.grayTertiary
+                        )
+                        .cornerRadius(40)
+                        .frame(width: 107, height: 28)
+                    })
+                }
+                .padding(.top, 10)
+                .padding(.bottom)
+                .foregroundColor(.primary)
                 
-                ScrollView {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            
-                        }, label: {
-                            HStack {
-                                Image(systemName: "plus")
-                                    .resizable()
-                                    .scaledToFit()
-                                    .frame(width: 15)
-                                Text("Add Place")
-                                    .font(.subheadline)
-                                    .padding(.leading, -5)
-                            }
-                            .padding(9)
-                            .background(
-                                Color.grayTertiary
-                            )
-                            .cornerRadius(40)
-                            .frame(width: 107, height: 28)
-                        })
-                    }
-                    .padding(.top, 10)
-                    .padding(.bottom)
-                    .foregroundColor(.primary)
-                    
-                    VStack (spacing: 20) {
+                // Iterating Saved Locations
+                NavigationStack {
+                    ScrollView {
                         ForEach(0..<8) { _ in
-                            Rectangle()
-                                .frame(width: 361, height: 115)
-                                .cornerRadius(20)
+                            WeatherCardComponent(weather: SunnyDay())
                         }
                     }
-                    .foregroundColor(.arsenic)
+//                    .frame(width: 361)
                 }
+                .ignoresSafeArea()
             }
             .ignoresSafeArea()
             .padding(.top)
             .padding(.horizontal)
+            .onAppear {
+                Task {
+                    await WeatherServiceManager.shared.fetchDaysForecast(location: (-6.178356, 106.6301559))
+                }
+            }
         }
     }
 }
 
 #Preview {
-    BookmarkPage()
+    BookmarkPage(locations: [(-6.178356, 106.6301559)])
 }

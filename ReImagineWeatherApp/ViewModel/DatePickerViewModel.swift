@@ -8,36 +8,13 @@
 import Foundation
 import SwiftUI
 
-class DatePickerViewModel: ObservableObject {
-    let startOfDay: Date
-    var dates: [Date] {
-        let calendar = Calendar.current
-        return (-1..<10).compactMap { dayOffset in
-            calendar.date(byAdding: .day, value: dayOffset, to: startOfDay)
-        }
-    }
+class DatePickerViewModel {
+    let weatherService = WeatherServiceManager.shared
+    let apService = APService.shared
     
-    //dummy safetyStatusData
-    var safetyStatus: [Color] {
-        [SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().safe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().unsafe.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor, SafetyInformation().caution.CircleColor]
-    }
+    static let shared = DatePickerViewModel()
     
-    @Published var selectedDate: Date
-    
-    init() {
-        let calendar = Calendar.current
-        let now = Date()
-        self.startOfDay = calendar.startOfDay(for: now)
-        self.selectedDate = self.startOfDay
-    }
-    
-    func select(date: Date) {
-        if Calendar.current.isDate(selectedDate, inSameDayAs: date) {
-            selectedDate = Calendar.current.startOfDay(for: Date())
-        } else {
-            selectedDate = date
-        }
-    }
+    var hourWeathers = [ParentWeather]()
     
     func resetDate(date dt: Date) -> Date {
         let calendar = Calendar(identifier: .gregorian)
@@ -70,7 +47,7 @@ class DatePickerViewModel: ObservableObject {
         let today = resetDate(date: dt)
         let calendar = Calendar(identifier: .gregorian)
         
-        for i in -1...9 {
+        for i in 0...9 {
             dates.append(calendar.date(byAdding: .day, value: i, to: today)!)
         }
         
@@ -97,11 +74,6 @@ class DatePickerViewModel: ObservableObject {
         }
         
         return false
-    }
-    
-    //create function to calculate safety status
-    func getStatusColor() -> Color {
-        return .paleGreenCircle
     }
     
     func getCurrentHour(date dt: Date) -> Date {
@@ -137,7 +109,48 @@ class DatePickerViewModel: ObservableObject {
         return false
     }
     
-    func getImageName() -> String {
-        return "cloud.sun.fill"
+    //create function to calculate safety status
+    func getStatusColor() -> Color {
+        return .paleGreenCircle
+    }
+    
+    func getDaysWeather(location loc: (lat: Double, lon: Double), date dt: Date) async {
+        let calendar = Calendar(identifier: .gregorian)
+        let sod = calendar.startOfDay(for: dt)
+        var curr = sod
+        
+        self.hourWeathers = await weatherService.fetchDaysWeathers(location: loc, date: dt)
+        
+        for hourWeather in hourWeathers {
+            hourWeather.AQI = await apService.fetchHourData(loc, curr)
+            curr = calendar.date(byAdding: .hour, value: 1, to: curr)!
+        }
+    }
+    
+    func checkWeather(date dt: Date) -> Bool {
+        let calendar = Calendar(identifier: .gregorian)
+        let sod = calendar.startOfDay(for: dt)
+        
+        if hourWeathers[0].dateTime == sod {
+            return false
+        }
+        
+        return true
+    }
+    
+    func getWeatherImage(location loc: (lat: Double, lon: Double), date dt: Date) async -> Image {
+        if self.hourWeathers.isEmpty || checkWeather(date: dt) {
+            await getDaysWeather(location: loc, date: dt)
+        }
+        
+        var weather: ParentWeather?
+        
+        for hourWeather in hourWeathers {
+            if hourWeather.dateTime == dt {
+                weather = hourWeather
+            }
+        }
+        
+        return weather?.getImage() ?? Image(systemName: "exclamationmark.triangle.fill")
     }
 }

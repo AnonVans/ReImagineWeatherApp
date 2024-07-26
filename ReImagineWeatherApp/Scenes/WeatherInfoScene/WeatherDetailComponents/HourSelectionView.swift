@@ -8,22 +8,25 @@
 import SwiftUI
 
 struct HourSelectionView: View {
-    var calendarVM = DatePickerViewModel()
+    var calendarVM = DatePickerViewModel.shared
     
-    var today = DatePickerViewModel().resetDate(date: Date.now)
-    @Binding var selectedDay: Date
+    var loc: (lat: Double, lon: Double)
+    
+    @Binding var selectedHour: Date
+    @Binding var today: Date
+    @State var didLoad = true
     
     var body: some View {
         ScrollView(.horizontal) {
             HStack(spacing: 30) {
                 ForEach(calendarVM.fetchhourSelection(date: today), id: \.self) { hour in
                     HourPickerComponent(
-                        selected: selectedDay,
+                        selected: selectedHour,
                         hour: hour,
-                        imageName: calendarVM.getImageName()
+                        loc: loc
                     )
                     .onTapGesture {
-                        selectedDay = hour
+                        selectedHour = hour
                     }
                 }
             }
@@ -32,9 +35,19 @@ struct HourSelectionView: View {
         .scrollIndicators(.hidden)
         .frame(width: 361, height: 61)
         .padding(.bottom)
+        .onAppear {
+            Task {
+                await calendarVM.getDaysWeather(location: loc, date: today)
+            }
+        }
+        .onChange(of: today) {
+            Task {
+                await calendarVM.getDaysWeather(location: loc, date: today)
+            }
+        }
     }
 }
 
 //#Preview {
-//    HourSelectionView()
+//    HourSelectionView(loc: (-6.178356, 106.6301559), selectedDay: Date.now)
 //}

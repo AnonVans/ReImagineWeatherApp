@@ -47,13 +47,16 @@ struct WeatherDetailPage: View {
                     
                     ZStack {
                         VStack (spacing: 15){
-                            CalendarSelectionView(selectedDay: $date)
+                            CalendarSelectionView(
+                                locations: [self.location], 
+                                selectedDay: $date
+                            )
                                 .padding(.top, 10)
                             
                             Divider()
                                 .padding(.horizontal)
                             
-                            HourSelectionView(selectedDay: $hour)
+                            HourSelectionView(loc: location, selectedHour: $hour, today: $date)
                         }
                         .padding()
                     }
@@ -76,7 +79,7 @@ struct WeatherDetailPage: View {
                     } else {
                         ScrollView {
                             VStack {
-                                Image(systemName: weatherDetailData.imageName)
+                                weatherDetailData.getImage()
                                     .resizable()
                                     .scaledToFit()
                                     .frame(width: 240)

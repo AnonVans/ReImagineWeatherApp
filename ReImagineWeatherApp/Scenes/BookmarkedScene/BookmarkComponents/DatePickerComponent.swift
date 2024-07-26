@@ -11,9 +11,13 @@ struct DatePickerComponent: View {
     var daySymbol: String
     var day: Date
     var isPast: Bool
-    var safetyStatusColor: Color
     
-    var calendarVM = DatePickerViewModel()
+    @State var safetyStatus: WeatherStatus?
+    
+    var calendarVM = DatePickerViewModel.shared
+    var weatherVM = WeatherDetailViewModel()
+    
+    var locations: [(lat: Double, lon: Double)]
     
     var body: some View {
         VStack(spacing: 10) {
@@ -34,11 +38,20 @@ struct DatePickerComponent: View {
             .frame(width: 22, height: 26)
             .shadow(radius: 4.5)
             
+            
             Circle()
-                .foregroundColor(isPast ? .gray : safetyStatusColor)
+                .foregroundColor(safetyStatus?.backGroundColor ?? .gray)
                 .frame(width: 8)
                 .shadow(radius: 4.5)
         }
-        .frame(width: 22, height: 80)
+        .frame(width: 30, height: 80)
+        .onAppear {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                Task {
+                    self.safetyStatus = await weatherVM.getStatusCondition(locations: locations, date: day)
+                }
+            }
+        }
     }
 }
+

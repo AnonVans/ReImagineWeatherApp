@@ -207,4 +207,33 @@ class WeatherServiceManager {
         
         return daysData
     }
+    
+    func getWeatherCondtion(condition con: WeatherCondition) -> Int {
+        switch con {
+            case .drizzle, .heavyRain, .rain, .sunShowers:
+                return 2
+            case .hurricane, .isolatedThunderstorms, .scatteredThunderstorms, .strongStorms, .thunderstorms, .tropicalStorm:
+                return 3
+            default:
+                return 1
+            }
+    }
+    
+    func fetchDaysForecast(location loc: (lat: Double, lon: Double)) async -> [(date: Date, uv: Int, condition: Int)] {
+        if weatherData == nil {
+            let location = CLLocation(latitude: loc.lat, longitude: loc.lon)
+            await self.fetchWeather(for: location)
+        }
+        
+        let weathers = self.weatherData?.dailyForecast.forecast
+        
+        var daysForecast = [(date: Date, uv: Int, condition: Int)]()
+        
+        for weather in weathers! {
+            daysForecast.append((weather.date, weather.uvIndex.value, self.getWeatherCondtion(condition: weather.condition)))
+        }
+        
+        return daysForecast
+    }
+    
 }

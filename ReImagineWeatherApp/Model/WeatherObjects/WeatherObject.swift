@@ -20,6 +20,7 @@ class ParentWeather {
     var condition: String
     var weatherType: String
     var temp: Int
+    var weatherClassification: Int
     
     init(
         location: (lat: Double, lon: Double) = (0.0, 0.0),
@@ -32,7 +33,9 @@ class ParentWeather {
         AQI: APDataModel = APDataModel(),
         condition: String = "Error",
         weatherType: String = "Rainny",
-        temp: Int = -1) {
+        temp: Int = -1,
+        weatherClassification: Int = 1
+    ) {
             self.location = location
             self.dateTime = dateTime
             self.imageName = imageName
@@ -44,6 +47,7 @@ class ParentWeather {
             self.condition = condition
             self.weatherType = weatherType
             self.temp = temp
+            self.weatherClassification = weatherClassification
     }
     
     func getUVILevel() -> UVIType {
@@ -55,7 +59,18 @@ class ParentWeather {
     }
     
     func getStatus() -> WeatherStatus {
-        return .Safe
+        let levels = [UVIType.getLevel(self.getUVILevel()), AQIType.getLevel(self.getAQILevel())]
+        let max = levels.max()
+        
+        switch max {
+            case 1: return .Safe
+            case 2: return .Caution
+            default: return .Unsafe
+        }
+    }
+    
+    func getImage() -> Image {
+        return Image(systemName: imageName)
     }
 }
 
@@ -64,8 +79,6 @@ class CloudyNoon: ParentWeather {
         super.init()
         self.imageName = "cloud.sun.fill"
         self.renderingMode = .multicolor
-//        self.imageColor.baseColor = .primary
-//        self.imageColor.accentColor = .primary
         self.gradientColor.startColor = .brightGray
         self.gradientColor.endColor = .darkSkyBlue
     }
@@ -76,8 +89,6 @@ class CloudyNight: ParentWeather {
         super.init()
         self.imageName = "cloud.moon.fill"
         self.renderingMode = .multicolor
-//        self.imageColor.baseColor = .white
-//        self.imageColor.accentColor = .white
         self.gradientColor.startColor = .blueberry
         self.gradientColor.endColor = .vistaBlue
     }
@@ -88,8 +99,6 @@ class ClearNight: ParentWeather {
         super.init()
         self.imageName = "moon.stars.fill"
         self.renderingMode = .multicolor
-//        self.imageColor.baseColor = .primary
-//        self.imageColor.accentColor = .primary
         self.gradientColor.startColor = .blueberry
         self.gradientColor.endColor = .unitedNationsBlue
     }
@@ -100,8 +109,6 @@ class SunnyDay: ParentWeather {
         super.init()
         self.imageName = "sun.max.fill"
         self.renderingMode = .multicolor
-//        self.imageColor.baseColor = .primary
-//        self.imageColor.accentColor = .primary
         self.gradientColor.startColor = .cream
         self.gradientColor.endColor = .skyBlue
     }
@@ -112,10 +119,19 @@ class RainnyDay: ParentWeather {
         super.init()
         self.imageName = "cloud.rain.fill"
         self.renderingMode = .multicolor
-//        self.imageColor.baseColor = .white
-//        self.imageColor.accentColor = .mayaBlue
         self.gradientColor.startColor = .blueberry
         self.gradientColor.endColor = .vistaBlue
+    }
+    
+    override func getStatus() -> WeatherStatus {
+        let levels = [UVIType.getLevel(self.getUVILevel()), AQIType.getLevel(self.getAQILevel()), 2]
+        let max = levels.max()
+        
+        switch max {
+            case 1: return .Safe
+            case 2: return .Caution
+            default: return .Unsafe
+        }
     }
 }
 
@@ -124,9 +140,22 @@ class StormyDay: ParentWeather {
         super.init()
         self.imageName = "cloudThunder"
         self.renderingMode = .multicolor
-//        self.imageColor.baseColor = .primary
-//        self.imageColor.accentColor = .primary
         self.gradientColor.startColor = .lighterGray
         self.gradientColor.endColor = .philippineGray
+    }
+    
+    override func getImage() -> Image {
+        return Image(imageName)
+    }
+    
+    override func getStatus() -> WeatherStatus {
+        let levels = [UVIType.getLevel(self.getUVILevel()), AQIType.getLevel(self.getAQILevel()), 3]
+        let max = levels.max()
+        
+        switch max {
+            case 1: return .Safe
+            case 2: return .Caution
+            default: return .Unsafe
+        }
     }
 }

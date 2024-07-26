@@ -221,8 +221,8 @@
 			isa = PBXGroup;
 			children = (
 				C8C7FD2E2C45B39E00A43A4B /* DatePickerComponent.swift */,
-				C8C7FD2C2C45B30F00A43A4B /* WeatherCardComponent.swift */,
 				C8C7FD762C485F2300A43A4B /* CalendarSelectionView.swift */,
+				C8C7FD2C2C45B30F00A43A4B /* WeatherCardComponent.swift */,
 			);
 			path = BookmarkComponents;
 			sourceTree = "<group>";
@@ -248,12 +248,12 @@
 		C8C7FD292C45B27800A43A4B /* WeatherDetailComponents */ = {
 			isa = PBXGroup;
 			children = (
-				C8C7FD322C45B3F300A43A4B /* HourPickerComponent.swift */,
 				C8C7FD302C45B3E800A43A4B /* SafetyCardComponent.swift */,
 				C8C7FD342C45B41500A43A4B /* InformationCardComponent.swift */,
 				C8C7FD382C45B54500A43A4B /* SafetyDetailCard.swift */,
 				C8C7FD3C2C45B5B600A43A4B /* InformationDetailCard.swift */,
 				C8C7FD632C47670300A43A4B /* WeatherDetailBackground.swift */,
+				C8C7FD322C45B3F300A43A4B /* HourPickerComponent.swift */,
 				C8C7FD782C48DD5800A43A4B /* HourSelectionView.swift */,
 			);
 			path = WeatherDetailComponents;

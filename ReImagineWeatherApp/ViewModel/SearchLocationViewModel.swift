@@ -15,20 +15,13 @@ class SearchLocationViewModel {
     init(locationServiceManager: LocationServiceManager = LocationServiceManager()) {
         self.locationServiceManager = locationServiceManager
     }
-    
-//    var coordinatesFromAddress: CLLocationCoordinate2D? {
-//        if let coordinates = locationServiceManager.coordinatesFromAddress {
-//            return CLLocationCoordinate2D(latitude: coordinates.latitude, longitude: coordinates.longitude)
-//        }
-//        return nil
-//    }
 
     var coordinatesFromAddress: CLLocation {
         if let coordinates = locationServiceManager.coordinatesFromAddress {
             print(coordinates)
             return CLLocation(latitude: coordinates.latitude, longitude: coordinates.longitude)
         }
-//        print("-1")
+        
         return CLLocation(latitude: -1, longitude: -1)
     }
     

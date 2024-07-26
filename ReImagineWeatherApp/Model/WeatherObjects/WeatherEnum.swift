@@ -39,6 +39,17 @@ enum UVIType: String {
         default : return .Extreme
         }
     }
+    
+    static func getLevel(_ type: UVIType) -> Int {
+        switch type {
+        case .Low:
+            return 1
+        case .Moderate, .High:
+            return 2
+        case .VeryHigh, .Extreme:
+            return 3
+        }
+    }
 }
 
 enum AQIType: String {
@@ -49,10 +60,6 @@ enum AQIType: String {
     case Unhealthy
     case VeryUnhealthy
     case Hazardous
-    
-//    var cardTitle {
-//        
-//    }
     
     var text: String {
         switch self {
@@ -84,6 +91,17 @@ enum AQIType: String {
             default : return .Hazardous
         }
     }
+    
+    static func getLevel(_ type: AQIType) -> Int {
+        switch type {
+        case .NoData, .Good:
+            return 1
+        case .ModerateAQ, .UnhealthyPartly, .Unhealthy:
+            return 2
+        case .VeryUnhealthy, .Hazardous:
+            return 3
+        }
+    }
 }
 
 enum WeatherType: String {
@@ -92,7 +110,7 @@ enum WeatherType: String {
     case ClearNight
 }
 
-enum WeatherStatus {
+enum WeatherStatus: String {
     case Safe
     case Caution
     case Unsafe
