@@ -10,44 +10,56 @@ import SwiftUI
 // information in the weather detail page
 struct InformationDetailCard: View {
     var infoType: InfoType
+    var infoTitle: String?
     var info: ComponentInfo
     var value: Int
     
     var body: some View {
         VStack {
-            HStack(alignment: .top) {
-                VStack(alignment: .leading, spacing: 4) {
+            HStack() {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text(infoTitle ?? "error")
+                        .font(.caption2)
+                    
+                    if infoType == .TextData {
+                        Text("\(value)")
+                            .font(.system(size: 32))
+                            .bold()
+                    } else {
+                        Image(systemName: info.componentImage)
+                            .cardTypeStyling(info.componentType)
+                    }
+                    
                     Text(info.componentTitle)
-                        .font(.system(size: 17))
+                        .font(.headline)
                         .bold()
+                    
                     Text(info.componentDescription)
-                        .foregroundColor(.secondary)
-                        .font(.system(size: 12))
-                        .font(.subheadline)
+                        .font(.caption)
                 }
                 
-                Spacer()
+                Spacer(minLength: 30)
                 
-                if infoType == .TextData {
-                    Text("\(value)")
-                        .frame(width: 72, height: 85)
-                        .background(.grayTertiary)
-                        .font(.system(size: 32))
-                        .cornerRadius(30)
-                        .padding(.leading, 8)
-                } else {
-                    Image(systemName: info.componentImage)
-                        .cardTypeStyling(info.componentType)
+                ZStack {
+                    Circle()
+                        .frame(width: 32, height: 32)
+                        .foregroundStyle(.grayTertiary)
+                    
+                    Image(systemName: "chevron.right")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(height: 17)
+                        .bold()
                 }
             }
             .padding()
-            .background(.invertPrimary)
+            .background(.groupBase)
+            .foregroundStyle(.primary)
             .cornerRadius(20)
-            .shadow(radius: 4)
         }
     }
 }
 
 #Preview {
-    InformationDetailCard(infoType: .TextData, info: WeatherComponent().getInfoDetails(type: WeatherType.ClearNight.rawValue), value: 20)
+    InformationDetailCard(infoType: .ImageData, infoTitle: "AirQuality", info: WeatherComponent().getInfoDetails(type: WeatherType.ClearNight.rawValue), value: 20)
 }

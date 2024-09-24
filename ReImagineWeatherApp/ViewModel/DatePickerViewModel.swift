@@ -109,7 +109,6 @@ class DatePickerViewModel {
         return false
     }
     
-    //create function to calculate safety status
     func getStatusColor() -> Color {
         return .paleGreenCircle
     }

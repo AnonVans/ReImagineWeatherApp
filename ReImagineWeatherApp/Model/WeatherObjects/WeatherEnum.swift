@@ -24,7 +24,7 @@ enum UVIType: String {
         case .High:
             return String(localized: "High")
         case .VeryHigh:
-            return String(localized: "VeryHigh")
+            return String(localized: "Very High")
         case .Extreme:
             return String(localized: "Extreme")
         }
@@ -118,22 +118,44 @@ enum WeatherStatus: String {
     var textColor: Color {
         switch self {
         case .Safe:
-            return .paleGreenText
+            return .safeText
         case .Caution:
-            return .paleGoldenrodText
+            return .cautionText
         case .Unsafe:
-            return .mauvelousText
+            return .unsafeText
         }
     }
     
     var backGroundColor: Color {
         switch self {
         case .Safe:
-            return .paleGreen
+            return .safe
         case .Caution:
-            return .paleGoldenrod
+            return .caution
         case .Unsafe:
-            return .mauvelous
+            return .unsafe
+        }
+    }
+    
+    var markBackground: Color {
+        switch self {
+        case .Safe:
+            return .safeMark
+        case .Caution:
+            return .cautionMark
+        case .Unsafe:
+            return .unsafeMark
+        }
+    }
+    
+    func getStatusTitle() -> String {
+        switch self {
+        case .Safe:
+            return String(localized: "Safe")
+        case .Caution:
+            return String(localized: "Caution")
+        case .Unsafe:
+            return String(localized: "Unsafe")
         }
     }
     

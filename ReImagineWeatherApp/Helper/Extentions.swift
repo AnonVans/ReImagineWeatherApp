@@ -55,19 +55,19 @@ extension Image {
     
     var clearDayCard: some View {
         return self
-                .font(.system(size: 72))
+                .font(.system(size: 39))
                 .foregroundColor(.clearDay)
     }
     
     var rainyCard: some View {
         return self
-                .font(.system(size: 72))
+                .font(.system(size: 39))
                 .foregroundColor(.rainy)
     }
     
     var clearNightCard: some View {
         return self
-                .font(.system(size: 72))
+                .font(.system(size: 39))
                 .foregroundColor(.clearNight)
     }
     

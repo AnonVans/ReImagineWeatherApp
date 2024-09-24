@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C8B700302C3E9E1000822F09 /* ReImagineWeatherAppApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7002F2C3E9E1000822F09 /* ReImagineWeatherAppApp.swift */; };
+		C8230C372C8EF72B008CEE24 /* DataPersistanceManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8230C362C8EF72B008CEE24 /* DataPersistanceManager.swift */; };
+		C87568ED2CA1496F00EABBCC /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = C87568EC2CA1496F00EABBCC /* Localizable.xcstrings */; };
+		C8ABCEE32C9D8EF200C6759D /* BookmarkViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8ABCEE22C9D8EF200C6759D /* BookmarkViewModel.swift */; };
+		C8B700302C3E9E1000822F09 /* ReImagineWeatherApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B7002F2C3E9E1000822F09 /* ReImagineWeatherApp.swift */; };
 		C8B700322C3E9E1000822F09 /* BookmarkPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8B700312C3E9E1000822F09 /* BookmarkPage.swift */; };
 		C8B700342C3E9E1200822F09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B700332C3E9E1200822F09 /* Assets.xcassets */; };
 		C8B700372C3E9E1200822F09 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8B700362C3E9E1200822F09 /* Preview Assets.xcassets */; };
@@ -51,8 +54,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C8230C362C8EF72B008CEE24 /* DataPersistanceManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataPersistanceManager.swift; sourceTree = "<group>"; };
+		C87568EC2CA1496F00EABBCC /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		C8ABCEE22C9D8EF200C6759D /* BookmarkViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkViewModel.swift; sourceTree = "<group>"; };
 		C8B7002C2C3E9E1000822F09 /* ReImagineWeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReImagineWeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8B7002F2C3E9E1000822F09 /* ReImagineWeatherAppApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReImagineWeatherAppApp.swift; sourceTree = "<group>"; };
+		C8B7002F2C3E9E1000822F09 /* ReImagineWeatherApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReImagineWeatherApp.swift; sourceTree = "<group>"; };
 		C8B700312C3E9E1000822F09 /* BookmarkPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BookmarkPage.swift; sourceTree = "<group>"; };
 		C8B700332C3E9E1200822F09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C8B700362C3E9E1200822F09 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -127,7 +133,8 @@
 			isa = PBXGroup;
 			children = (
 				C8C7FD6A2C47BE0400A43A4B /* ReImagineWeatherApp.entitlements */,
-				C8B7002F2C3E9E1000822F09 /* ReImagineWeatherAppApp.swift */,
+				C87568EC2CA1496F00EABBCC /* Localizable.xcstrings */,
+				C8B7002F2C3E9E1000822F09 /* ReImagineWeatherApp.swift */,
 				C8B7003D2C3E9E2300822F09 /* Model */,
 				C8C7FD242C45B0AF00A43A4B /* Scenes */,
 				C8B7003F2C3E9E3800822F09 /* ViewModel */,
@@ -174,6 +181,7 @@
 				C8C7FD5D2C4657BA00A43A4B /* SearchLocationViewModel.swift */,
 				C8C7FD5F2C4657D000A43A4B /* WeatherDetailViewModel.swift */,
 				C8C7FD612C47512400A43A4B /* DatePickerViewModel.swift */,
+				C8ABCEE22C9D8EF200C6759D /* BookmarkViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -185,6 +193,7 @@
 				C8B700452C3FC73C00822F09 /* APServiceManager.swift */,
 				C8C7FD4F2C4625D300A43A4B /* WeatherServiceManager.swift */,
 				C8C7FD512C4625ED00A43A4B /* LocationServiceManager.swift */,
+				C8230C362C8EF72B008CEE24 /* DataPersistanceManager.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -366,6 +375,7 @@
 			knownRegions = (
 				en,
 				Base,
+				id,
 			);
 			mainGroup = C8B700232C3E9E1000822F09;
 			productRefGroup = C8B7002D2C3E9E1000822F09 /* Products */;
@@ -384,6 +394,7 @@
 			files = (
 				C8B700372C3E9E1200822F09 /* Preview Assets.xcassets in Resources */,
 				C8B700342C3E9E1200822F09 /* Assets.xcassets in Resources */,
+				C87568ED2CA1496F00EABBCC /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -398,6 +409,7 @@
 				C8C7FD572C462CBE00A43A4B /* BookmarkedDataModel.swift in Sources */,
 				C8B700482C43488500822F09 /* Protocols.swift in Sources */,
 				C8C7FD312C45B3E800A43A4B /* SafetyCardComponent.swift in Sources */,
+				C8ABCEE32C9D8EF200C6759D /* BookmarkViewModel.swift in Sources */,
 				C8B700442C3FBBC700822F09 /* APDataModel.swift in Sources */,
 				C8C7FD5E2C4657BA00A43A4B /* SearchLocationViewModel.swift in Sources */,
 				C8C7FD642C47670300A43A4B /* WeatherDetailBackground.swift in Sources */,
@@ -417,12 +429,13 @@
 				C8C7FD5C2C462EB000A43A4B /* SearchLocationView.swift in Sources */,
 				C8C7FD792C48DD5800A43A4B /* HourSelectionView.swift in Sources */,
 				C8C7FD2B2C45B2A300A43A4B /* WeatherDetailPage.swift in Sources */,
-				C8B700302C3E9E1000822F09 /* ReImagineWeatherAppApp.swift in Sources */,
+				C8B700302C3E9E1000822F09 /* ReImagineWeatherApp.swift in Sources */,
 				C8C7FD542C4626C400A43A4B /* WeatherObject.swift in Sources */,
 				C8C7FD6F2C47DAB200A43A4B /* WeatherComponent.swift in Sources */,
 				C8C7FD432C460BFA00A43A4B /* WeatherInfomation.swift in Sources */,
 				C8B700462C3FC73C00822F09 /* APServiceManager.swift in Sources */,
 				C8C7FD592C462E5400A43A4B /* RecentSearchDataModel.swift in Sources */,
+				C8230C372C8EF72B008CEE24 /* DataPersistanceManager.swift in Sources */,
 				C8C7FD4D2C461C7400A43A4B /* SafetyInformation.swift in Sources */,
 				C8C7FD6C2C47C9C600A43A4B /* WeatherEnum.swift in Sources */,
 				C8C7FD752C47DAE600A43A4B /* ComponentsProtocol.swift in Sources */,
@@ -498,6 +511,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -554,6 +568,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;

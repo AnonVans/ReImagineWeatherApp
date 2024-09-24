@@ -8,92 +8,101 @@
 import SwiftUI
 
 struct WeatherCardComponent: View {
-    var weather: ParentWeather
+    @State var weather = ParentWeather()
+    @State var isLoading = true
+    
+    var placeName: String = ""
+    var city: String = ""
+    var location: (lat: Double, lon: Double)
+    
+    var weatherDetailVM = WeatherDetailViewModel()
     
     var body: some View {
-        
-        ZStack{
-            HStack {
-                VStack{
-                    HStack {
-                        Text("Location")
-                            .font(.title3)
-                            .bold()
-                        
-                        Spacer()
-                    }
+        ZStack {
+            if isLoading {
+                ZStack {
+                    RoundedRectangle(cornerRadius: 20)
+                        .frame(width: 361, height: 126)
+                        .foregroundStyle(.grayQuaternary)
                     
-                    HStack {
-                        Text("City")
-                            .font(.footnote)
-                            .foregroundStyle(.arsenic)
-                            .opacity(0.8)
-                        
-                        Spacer()
-                    }
-                    
-                    Spacer()
-                    
-                    HStack{
-                        Text("Time")
-                        Text("UVI: \(weather.UVI)")
-                        Text("AQI: \(weather.AQI.aqi)")
-                        
-                        Spacer()
-                    }
-                    .font(.caption)
+                    ProgressView()
                 }
-                .frame(width: 170, height: 83)
-                .padding(.leading)
-
-                Spacer()
-                
+            } else {
                 VStack {
-                    weather.getImage()
-                        .symbolRenderingMode(weather.renderingMode)
-                        .resizable()
-                        .scaledToFit()
-                        .foregroundStyle(
-                            weather.imageColor.baseColor,
-                            weather.imageColor.accentColor
-                        )
-                        .shadow(radius: 3)
-                    
-                    ZStack {
-                        Text(weather.getStatus().rawValue)
-                            .font(.caption)
-                            .foregroundStyle(weather.getStatus().textColor)
-                            .frame(width: 44, height: 16)
-                            .padding()
-                    }
-                    .background(weather.getStatus().backGroundColor)
-                    .frame(width: 58, height: 16)
-                    .cornerRadius(10)
-                    .shadow(radius: 2)
+                    HStack (alignment: .top) {
+                        VStack(alignment: .leading) {
+                            Text(Date.now.formatAs24HourTimeNow())
+                                .font(.caption)
+                                .foregroundStyle(.arsenic)
+                                .opacity(0.8)
+                            
+                            Text(placeName)
+                                .font(.title3)
+                                .bold()
+                            
+                            Text(city)
+                                .font(.caption)
+                                .foregroundStyle(.arsenic)
+                                .opacity(0.8)
+                        }
                         
+                        Spacer()
+                        
+                        weather.getImage()
+                            .symbolRenderingMode(weather.renderingMode)
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 94, height: 62)
+                            .foregroundStyle(
+                                weather.imageColor.baseColor,
+                                weather.imageColor.accentColor
+                            )
+                        
+                    }
+                    
+                    HStack {
+                        HStack {
+                            Text(weather.getStatus().rawValue)
+                                .font(.caption)
+                                .foregroundStyle(weather.getStatus().textColor)
+                                .frame(height: 16)
+                                .padding(.horizontal, 10)
+                                .background(weather.getStatus().backGroundColor)
+                                .cornerRadius(10)
+                            
+                            Text(weather.getStatus().getStatusCondition())
+                                .font(.caption2)
+                                .frame(height: 16)
+                                .padding(.trailing, 5)
+                        }
+                        .background(.grayQuaternary)
+                        .cornerRadius(10)
+                        
+                        Spacer()
+                    }
+                    .padding(.top, 5)
                 }
-                .frame(width: 88, height: 83)
-                .padding(.trailing, 15)
             }
         }
-        .frame(width: 361, height: 115)
+        .padding(.horizontal, 20)
+        .frame(width: 361, height: 126)
         .background(
-            LinearGradient(
-                gradient:
-                    Gradient(
-                        colors: [
-                            weather.gradientColor.startColor,
-                            weather.gradientColor.endColor]
-                    ),
-                startPoint: .top, endPoint: .bottom
-            )
+            weather.color
         )
         .cornerRadius(20)
-        .shadow(color: .black.opacity(0.25), radius: 4.5, x: 0, y: 0)
-        .padding(.vertical, 10)
+        .onAppear {
+            Task {
+                weather = await weatherDetailVM.fetchCurrentWeatherData(
+                    location: location,
+                    dateTime: Date.now
+                )
+                
+                isLoading = false
+            }
+        }
     }
 }
 
 #Preview {
-    WeatherCardComponent(weather: StormyDay())
+    WeatherCardComponent(placeName: "Green Office Park", city: "Cisauk, Tangerang", location: (-6.178356, 106.6301559))
 }

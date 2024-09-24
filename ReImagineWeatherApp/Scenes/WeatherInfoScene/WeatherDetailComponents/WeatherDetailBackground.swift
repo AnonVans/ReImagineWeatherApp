@@ -8,21 +8,14 @@
 import SwiftUI
 
 struct WeatherDetailBackground: View {
-    @State var startColor: Color
-    @State var endColor: Color
+    @State var weatherColor: Color
     
     var body: some View {
-        LinearGradient(
-            stops: [
-                Gradient.Stop(color: startColor, location: 0.0),
-                Gradient.Stop(color: endColor, location: 0.75)
-            ],
-            startPoint: .top, endPoint: .bottom
-        )
-        .ignoresSafeArea()
+        weatherColor
+            .ignoresSafeArea()
     }
 }
 
 #Preview {
-    WeatherDetailBackground(startColor: .cream, endColor: .skyBlue)
+    WeatherDetailBackground(weatherColor: .sunny)
 }

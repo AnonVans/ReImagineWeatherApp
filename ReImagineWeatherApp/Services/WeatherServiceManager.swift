@@ -37,7 +37,7 @@ class WeatherServiceManager {
         let condition = currWeather.condition.rawValue
         
         var night: Bool {
-            if date.formatAsHour() >= 18 && date.formatAsHour() <= 4  {
+            if date.formatAsHour() >= 18 || date.formatAsHour() <= 4  {
                 return true
             }
             
@@ -108,7 +108,6 @@ class WeatherServiceManager {
         for weather in weathers! {
             if weather.date == dt {
                 weatherData = weather
-//                print("\(weather.date) || \(dt)")
             }
         }
         
@@ -116,8 +115,6 @@ class WeatherServiceManager {
         let uv = weatherData!.uvIndex.value
         let temp = Int(weatherData!.temperature.value)
         let condition = weatherData!.condition.description
-        
-//        print(date.formatAsHour())
 
         var night: Bool {
             if date.formatAsHour() >= 18 || date.formatAsHour() <= 4  {

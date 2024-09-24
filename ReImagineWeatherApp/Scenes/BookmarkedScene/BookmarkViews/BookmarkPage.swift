@@ -7,22 +7,18 @@
 
 import SwiftUI
 import MapKit
+import SwiftData
 
 struct BookmarkPage: View {
     @State var date = DatePickerViewModel().resetDate(date: Date.now)
-    var locations: [(lat: Double, lon: Double)]
+    @State var locationsData = [BookmarkedLocation]()
+    @State var locations = [(lat: Double, lon: Double)]()
+    
+    var bookmarkVM = BookmarkViewModel()
     
     var body: some View {
-        VStack {
+        NavigationStack {
             VStack {
-                HStack {
-                    Text("Weather")
-                        .font(.largeTitle)
-                        .bold()
-                    Spacer()
-                }
-                .padding(.bottom)
-                
                 ZStack {
                     CalendarSelectionView(
                         locations: locations,
@@ -31,18 +27,15 @@ struct BookmarkPage: View {
                         .padding(.top)
                 }
                 .frame(width: 361)
-                .background(
-                    Color.grayQuaternary2
-                )
                 .cornerRadius(30)
-                .shadow(color: Color.black.opacity(0.2), radius: 9, x: 0, y: 5)
                 .padding(.bottom)
                 
                 HStack {
                     Spacer()
-                    Button(action: {
-                        
-                    }, label: {
+                    
+                    NavigationLink {
+                        SearchLocationView()
+                    } label: {
                         HStack {
                             Image(systemName: "plus")
                                 .resizable()
@@ -57,36 +50,49 @@ struct BookmarkPage: View {
                             Color.grayTertiary
                         )
                         .cornerRadius(40)
-                        .frame(width: 107, height: 28)
-                    })
+                        .frame(height: 28)
+                    }
                 }
                 .padding(.top, 10)
                 .padding(.bottom)
                 .foregroundColor(.primary)
                 
-                // Iterating Saved Locations
                 NavigationStack {
                     ScrollView {
-                        ForEach(0..<8) { _ in
-                            WeatherCardComponent(weather: SunnyDay())
+                        ForEach(locationsData) { data in
+                            NavigationLink {
+                                WeatherDetailPage(
+                                    placeName: data.placeName,
+                                    region: data.city, 
+                                    locCoor: (data.latitude, data.longitude),
+                                    isSaved: true,
+                                    id: data.id
+                                )
+                            } label: {
+                                WeatherCardComponent(
+                                    placeName: data.placeName,
+                                    city: data.city, 
+                                    location: (data.latitude, data.longitude)
+                                )
+                            }
                         }
                     }
-//                    .frame(width: 361)
+                    .frame(width: 361)
                 }
                 .ignoresSafeArea()
+                .buttonStyle(PlainButtonStyle())
             }
-            .ignoresSafeArea()
+            .navigationTitle("WeatherCare")
             .padding(.top)
             .padding(.horizontal)
             .onAppear {
-                Task {
-                    await WeatherServiceManager.shared.fetchDaysForecast(location: (-6.178356, 106.6301559))
-                }
+                locationsData = bookmarkVM.fetchLocations()
+                locations = bookmarkVM.fecthCoordinates(locations: locationsData)
             }
         }
     }
 }
 
 #Preview {
-    BookmarkPage(locations: [(-6.178356, 106.6301559)])
+    BookmarkPage()
 }

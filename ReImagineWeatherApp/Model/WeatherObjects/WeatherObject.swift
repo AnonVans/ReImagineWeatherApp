@@ -14,7 +14,7 @@ class ParentWeather {
     var imageName: String
     var renderingMode: SymbolRenderingMode
     var imageColor: (baseColor: Color, accentColor: Color)
-    var gradientColor: (startColor: Color, endColor: Color)
+    var color: Color
     var UVI: Int
     var AQI: APDataModel
     var condition: String
@@ -28,7 +28,7 @@ class ParentWeather {
         imageName: String = "exclamationmark.triangle.fill",
         renderingMode: SymbolRenderingMode = .monochrome,
         imageColor: (baseColor: Color, accentColor: Color) = (Color.red, Color.red),
-        gradientColor: (startColor: Color, endColor: Color) = (Color.white, Color.black),
+        color: Color = Color.black,
         UVI: Int = -1,
         AQI: APDataModel = APDataModel(),
         condition: String = "Error",
@@ -41,7 +41,7 @@ class ParentWeather {
             self.imageName = imageName
             self.renderingMode = renderingMode
             self.imageColor = imageColor
-            self.gradientColor = gradientColor
+            self.color = color
             self.UVI = UVI
             self.AQI = AQI
             self.condition = condition
@@ -79,8 +79,7 @@ class CloudyNoon: ParentWeather {
         super.init()
         self.imageName = "cloud.sun.fill"
         self.renderingMode = .multicolor
-        self.gradientColor.startColor = .brightGray
-        self.gradientColor.endColor = .darkSkyBlue
+        self.color = .cloudy
     }
 }
 
@@ -89,8 +88,7 @@ class CloudyNight: ParentWeather {
         super.init()
         self.imageName = "cloud.moon.fill"
         self.renderingMode = .multicolor
-        self.gradientColor.startColor = .blueberry
-        self.gradientColor.endColor = .vistaBlue
+        self.color = .cloudyNight
     }
 }
 
@@ -99,8 +97,7 @@ class ClearNight: ParentWeather {
         super.init()
         self.imageName = "moon.stars.fill"
         self.renderingMode = .multicolor
-        self.gradientColor.startColor = .blueberry
-        self.gradientColor.endColor = .unitedNationsBlue
+        self.color = .clearNight
     }
 }
 
@@ -109,8 +106,7 @@ class SunnyDay: ParentWeather {
         super.init()
         self.imageName = "sun.max.fill"
         self.renderingMode = .multicolor
-        self.gradientColor.startColor = .cream
-        self.gradientColor.endColor = .skyBlue
+        self.color = .sunny
     }
 }
 
@@ -119,8 +115,7 @@ class RainnyDay: ParentWeather {
         super.init()
         self.imageName = "cloud.rain.fill"
         self.renderingMode = .multicolor
-        self.gradientColor.startColor = .blueberry
-        self.gradientColor.endColor = .vistaBlue
+        self.color = .rain
     }
     
     override func getStatus() -> WeatherStatus {
@@ -140,8 +135,7 @@ class StormyDay: ParentWeather {
         super.init()
         self.imageName = "cloudThunder"
         self.renderingMode = .multicolor
-        self.gradientColor.startColor = .lighterGray
-        self.gradientColor.endColor = .philippineGray
+        self.color = .rain
     }
     
     override func getImage() -> Image {

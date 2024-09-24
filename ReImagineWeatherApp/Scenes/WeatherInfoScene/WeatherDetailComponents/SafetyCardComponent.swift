@@ -14,18 +14,41 @@ struct SafetyCardComponent: View {
     var aqiType: AQIType = .Good
     
     var body: some View {
-        Text(status.getContent(uv: uvType, aqi: aqiType))
-            .foregroundStyle(status.textColor)
-            .padding()
-            .font(.system(size: 16))
-            .multilineTextAlignment(.center)
-            .frame(width: 361)
-            .background {
-                status.backGroundColor
-                    .clipShape(
-                        RoundedRectangle(cornerRadius: 20)
-                    )
+        HStack {
+            VStack(alignment: .leading, spacing: 8) {
+                Text(status.getStatusTitle())
+                    .font(.headline)
+                    .foregroundStyle(status.textColor)
+                    .frame(height: 22)
+                    .padding(.horizontal, 10)
+                    .background(status.backGroundColor)
+                    .cornerRadius(10)
+                
+                Text(status.getContent(uv: uvType, aqi: aqiType))
+                    .font(.caption)
+                    .foregroundStyle(.primary)
             }
+            
+            Spacer(minLength: 30)
+            
+            ZStack {
+                Circle()
+                    .frame(width: 32, height: 32)
+                    .foregroundStyle(.grayTertiary)
+                
+                Image(systemName: "chevron.right")
+                    .resizable()
+                    .scaledToFit()
+                    .frame(height: 17)
+                    .bold()
+            }
+        }
+        .padding(.horizontal, 16)
+        .padding(.vertical)
+        .background {
+            RoundedRectangle(cornerRadius: 20)
+                .foregroundStyle(.groupBase)
+        }
     }
 }
 

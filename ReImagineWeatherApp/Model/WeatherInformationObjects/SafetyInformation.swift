@@ -13,7 +13,7 @@ extension SafetyInformation {
     }
     
     var caution: (UV: String, AQ: String, Weather: String, CircleColor: Color) {
-        return (String(localized: "Moderate\nHigh"), String(localized: "Moderate\nSensitive\nUnhealthy"), String(localized: " Mostly Sunny\nLight Rain\nHeavy Rain"), Color.paleGoldenrodCircle)
+        return (String(localized: "Moderate\nHigh"), String(localized: "Moderate\nSensitive\nUnhealthy"), String(localized: "Mostly Sunny\nLight Rain\nHeavy Rain"), Color.paleGoldenrodCircle)
     }
     
     var unsafe: (UV: String, AQ: String, Weather: String, CircleColor: Color) {

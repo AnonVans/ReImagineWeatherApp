@@ -20,10 +20,9 @@ struct DatePickerComponent: View {
     var locations: [(lat: Double, lon: Double)]
     
     var body: some View {
-        VStack(spacing: 10) {
+        VStack(spacing: 4) {
             Text(daySymbol)
                 .font(.caption2)
-                .shadow(radius: 4.5)
                 .foregroundColor(isPast ? .gray : .primary)
             
             ZStack {
@@ -36,13 +35,11 @@ struct DatePickerComponent: View {
                     .foregroundColor(isPast ? .gray : .primary)
             }
             .frame(width: 22, height: 26)
-            .shadow(radius: 4.5)
             
             
             Circle()
-                .foregroundColor(safetyStatus?.backGroundColor ?? .gray)
+                .foregroundColor(locations.isEmpty ? .gray : safetyStatus?.markBackground ?? .gray)
                 .frame(width: 8)
-                .shadow(radius: 4.5)
         }
         .frame(width: 30, height: 80)
         .onAppear {

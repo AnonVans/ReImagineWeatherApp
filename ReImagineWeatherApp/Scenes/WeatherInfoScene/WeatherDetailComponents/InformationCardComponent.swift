@@ -18,7 +18,7 @@ struct InformationCardComponent: View {
                     VStack(alignment: .leading, spacing: 10) {
                         HStack (alignment: .center) {
                             Text(data.infoDetailName)
-                                .font(.system(size: 17))
+                                .font(.subheadline)
                                 .fontWeight(.bold)
                             
                             Spacer()
@@ -34,7 +34,7 @@ struct InformationCardComponent: View {
                         }
                         Text(data.infoDetailDescription)
                             .foregroundColor(.primary)
-                            .font(.system(size: 12))
+                            .font(.caption2)
                     }
                     .padding(.horizontal, 10)
                     
@@ -61,5 +61,5 @@ struct InformationCardComponent: View {
 }
 
 #Preview {
-    InformationCardComponent(infoType: .SpecialData, data: InfoDetailCard.init(infoDetailName: "Safe", infoDetailType: "circle.fill", infoDetailDescription: "desc"))
+    InformationCardComponent(infoType: .ImageData, data: InfoDetailCard.init(infoDetailName: "Safe", infoDetailType: "circle.fill", infoDetailDescription: "desc"))
 }

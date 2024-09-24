@@ -38,7 +38,6 @@ struct HourPickerComponent: View {
                         .resizable()
                         .scaledToFit()
                         .symbolRenderingMode(.multicolor)
-                        .shadow(radius: 1)
                 }
             }
             .frame(width: 48, height: 43)

@@ -6,12 +6,13 @@
 //
 
 import SwiftUI
+import SwiftData
 
 @main
-struct ReImagineWeatherAppApp: App {
+struct ReImagineWeatherApp: App {
     var body: some Scene {
         WindowGroup {
-            SearchLocationView()
+            BookmarkPage()
         }
     }
 }

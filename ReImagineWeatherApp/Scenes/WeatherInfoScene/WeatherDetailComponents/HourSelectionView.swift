@@ -34,7 +34,6 @@ struct HourSelectionView: View {
         }
         .scrollIndicators(.hidden)
         .frame(width: 361, height: 61)
-        .padding(.bottom)
         .onAppear {
             Task {
                 await calendarVM.getDaysWeather(location: loc, date: today)

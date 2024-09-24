@@ -8,11 +8,15 @@
 import SwiftUI
 
 struct WeatherDetailPage: View {
+    @Environment(\.dismiss) var dismiss
+    
     var placeName: String
     var region: String
-    var location: (lat: Double, lon: Double)
+    var locCoor: (lat: Double, lon: Double)
     
     var weatherDetailVM = WeatherDetailViewModel()
+    var isSaved = false
+    var id = UUID()
     
     @State var viewDidLoad = true
     @State var presentStatusSheet = false
@@ -28,8 +32,7 @@ struct WeatherDetailPage: View {
         ZStack {
             if !viewDidLoad {
                 WeatherDetailBackground(
-                    startColor: weatherDetailData.gradientColor.startColor,
-                    endColor: weatherDetailData.gradientColor.endColor
+                    weatherColor: weatherDetailData.color
                 )
             }
             
@@ -42,30 +45,31 @@ struct WeatherDetailPage: View {
                     Text(region)
                         .font(.footnote)
                         .foregroundStyle(.arsenic)
-                        .padding(.top, -10)
                         .padding(.bottom)
                     
                     ZStack {
-                        VStack (spacing: 15){
+                        VStack (spacing: 5){
                             CalendarSelectionView(
-                                locations: [self.location], 
+                                locations: [(locCoor)],
                                 selectedDay: $date
                             )
-                                .padding(.top, 10)
                             
                             Divider()
                                 .padding(.horizontal)
                             
-                            HourSelectionView(loc: location, selectedHour: $hour, today: $date)
+                            HourSelectionView(
+                                loc: (locCoor),
+                                selectedHour: $hour,
+                                today: $date
+                            )
                         }
-                        .padding()
+                        .padding(10)
                     }
                     .frame(width: 361)
                     .background(
-                        Color.grayQuaternary2
+                        Color.calender
                     )
                     .cornerRadius(30)
-                    .shadow(color: Color.black.opacity(0.2), radius: 9, x: 0, y: 5)
                     .padding(.bottom)
                 }
                 
@@ -82,7 +86,7 @@ struct WeatherDetailPage: View {
                                 weatherDetailData.getImage()
                                     .resizable()
                                     .scaledToFit()
-                                    .frame(width: 240)
+                                    .frame(height: 175)
                                     .symbolRenderingMode(weatherDetailData.renderingMode)
                                     .padding(.bottom)
                                 
@@ -93,25 +97,26 @@ struct WeatherDetailPage: View {
                                     .font(.subheadline)
                                     .padding(.bottom)
                                 
-                                VStack (spacing: 20){
-                                    SafetyCardComponent(
-                                        status: weatherDetailData.getStatus(),
-                                        uvType: weatherDetailData.getUVILevel(),
-                                        aqiType: weatherDetailData.getAQILevel()
+                                SafetyCardComponent(
+                                    status: weatherDetailData.getStatus(),
+                                    uvType: weatherDetailData.getUVILevel(),
+                                    aqiType: weatherDetailData.getAQILevel()
+                                )
+                                .onTapGesture {
+                                    presentStatusSheet = true
+                                }
+                                .sheet(isPresented: $presentStatusSheet) {
+                                    InformationDetailView(
+                                        infoType: .SpecialData,
+                                        data: SafetyInformation()
                                     )
-                                    .onTapGesture {
-                                        presentStatusSheet = true
-                                    }
-                                    .sheet(isPresented: $presentStatusSheet) {
-                                        InformationDetailView(
-                                            infoType: .SpecialData,
-                                            data: SafetyInformation()
-                                        )
-                                        .ignoresSafeArea()
-                                    }
-                                    
+                                    .ignoresSafeArea()
+                                }
+                                .padding(.bottom, 32)
+                                
+                                VStack (spacing: 16){
                                     InformationDetailCard(
-                                        infoType: .TextData,
+                                        infoType: .TextData, infoTitle: String(localized: "UV Index"),
                                         info: UVComponent().getInfoDetails(type: weatherDetailData.getUVILevel().rawValue),
                                         value: weatherDetailData.UVI
                                     )
@@ -128,7 +133,7 @@ struct WeatherDetailPage: View {
                                     
                                     if weatherDetailData.AQI.aqi > -1 {
                                         InformationDetailCard(
-                                            infoType: .TextData,
+                                            infoType: .TextData, infoTitle: String(localized: "Air Quality Index"),
                                             info: AQIComponent().getInfoDetails(type: weatherDetailData.getAQILevel().rawValue),
                                             value: weatherDetailData.AQI.aqi
                                         )
@@ -145,11 +150,11 @@ struct WeatherDetailPage: View {
                                     }
                                     
                                     InformationDetailCard(
-                                        infoType: .ImageData,
+                                        infoType: .ImageData, infoTitle: String(localized: "Weather Safety"),
                                         info: WeatherComponent().getInfoDetails(type: weatherDetailData.weatherType),
                                         value: -1
                                     )
-                                    .padding(.bottom, 25)
+                                    .padding(.bottom, 75)
                                     .onTapGesture {
                                         presentWeatherSheet = true
                                     }
@@ -161,22 +166,18 @@ struct WeatherDetailPage: View {
                                         .ignoresSafeArea()
                                     }
                                 }
-                                .foregroundColor(.arsenic)
                             }
                         }
                         .scrollIndicators(.hidden)
                     }
                 }
                 .ignoresSafeArea()
-                .padding(.top, 25)
                 .frame(width: 361)
             }
             .onAppear {
-//                print(location)
-                
-                Task {
+              Task {
                     weatherDetailData = await weatherDetailVM.fetchHourWeatherData(
-                        location: location,
+                        location: locCoor,
                         dateTime: DatePickerViewModel().chooseDateHour(date: date, time: hour.formatAsHour()))
                     viewDidLoad = false
                 }
@@ -185,7 +186,7 @@ struct WeatherDetailPage: View {
                 viewDidLoad = true
                 Task {
                     weatherDetailData = await weatherDetailVM.fetchHourWeatherData(
-                        location: location,
+                        location: locCoor,
                         dateTime: DatePickerViewModel().chooseDateHour(date: date, time: hour.formatAsHour()))
                     viewDidLoad = false
                 }
@@ -194,15 +195,35 @@ struct WeatherDetailPage: View {
                 viewDidLoad = true
                 Task {
                     weatherDetailData = await weatherDetailVM.fetchHourWeatherData(
-                        location: location,
+                        location: locCoor,
                         dateTime: DatePickerViewModel().chooseDateHour(date: date, time: hour.formatAsHour()))
                     viewDidLoad = false
                 }
             }
         }
+        .toolbar {
+            ToolbarItemGroup(placement: .topBarTrailing) {
+                if isSaved {
+                    Button("Delete") {
+                        weatherDetailVM.deleteLocation(id: id)
+                        dismiss()
+                    }
+                } else {
+                    Button("Save") {
+                        weatherDetailVM.saveLocation(
+                            placeName: placeName,
+                            city: region,
+                            loc: locCoor
+                        )
+                        dismiss()
+                    }
+                }
+            }
+        }
+        .navigationBarTitleDisplayMode(.inline)
     }
 }
 
 #Preview {
-    WeatherDetailPage(placeName: "Green Office Park", region: "Cisauk, Tangerang", location: (-6.178356, 106.6301559))
+    WeatherDetailPage(placeName: "Green Office Park", region: "Cisauk, Tangerang", locCoor: (-6.178356, 106.6301559))
 }

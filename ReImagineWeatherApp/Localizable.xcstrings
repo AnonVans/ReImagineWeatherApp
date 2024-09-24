@@ -1,0 +1,1086 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%lld" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
+    },
+    "%lld°" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld°"
+          }
+        }
+      }
+    },
+    "Add Place" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tambah Lokasi"
+          }
+        }
+      }
+    },
+    "Air Quality Index" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara"
+          }
+        }
+      }
+    },
+    "Air quality is %@. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara %@."
+          }
+        }
+      }
+    },
+    "Air quality is acceptable. However, there may be risk for unusually sensitive people. Consider making outdoor activities shorter if you’re unusually sensitive to particle pollution." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas udara bisa diterima. Namun, mungkin ada risiko bagi orang yang sangat sensitif. Pertimbangkan untuk menyingkatkan aktivitas di luar ruangan kalau anda sangat sensitif terhadap polusi partikel."
+          }
+        }
+      }
+    },
+    "AQ Index: 0-50" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara: 0-50"
+          }
+        }
+      }
+    },
+    "AQ Index: 51-100" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara: 51-100"
+          }
+        }
+      }
+    },
+    "AQ Index: 101-150" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara: 101-150"
+          }
+        }
+      }
+    },
+    "AQ Index: 151-200" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara: 151-200"
+          }
+        }
+      }
+    },
+    "AQ Index: 201-300" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara: 201-300"
+          }
+        }
+      }
+    },
+    "AQ Index: 301-500" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara: 301-500"
+          }
+        }
+      }
+    },
+    "AQI" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "AQI"
+          }
+        }
+      }
+    },
+    "AQI Level" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level AQI"
+          }
+        }
+      }
+    },
+    "Avoid outdoor activities to stay safe." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindari aktivitas di luar ruangan untuk tetap aman."
+          }
+        }
+      }
+    },
+    "Avoid outdoor activities. Everyone should wear masks if outside and limit exposure to air pollution." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindari aktivitas di luar ruangan. Semua orang sebaiknya memakai masker jika berada di luar dan membatasi paparan terhadap polusi udara."
+          }
+        }
+      }
+    },
+    "Avoid sun exposure as much as possible. Wear protective clothing, a hat, and sunglasses. Apply broad-spectrum SPF 30+ sunscreen every 2 hours or after swimming or sweating." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hindari paparan sinar matahari sebisa mungkin. Pakai pakaian pelindung, topi, dan kacamata hitam. Gunakan broad-spectrum sunscreen SPF 30+ setiap 2 jam atau setelah berenang atau berkeringat."
+          }
+        }
+      }
+    },
+    "Caution" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waspada"
+          }
+        }
+      }
+    },
+    "Check some precautions that are needed." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Periksa beberapa tindakan pencegahan yang diperlukan."
+          }
+        }
+      }
+    },
+    "Clear Day Safety" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips Keselamatan Siang Hari"
+          }
+        }
+      }
+    },
+    "Clear Day Weather Safety" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips Keselamatan Siang Hari"
+          }
+        }
+      }
+    },
+    "Clear Night Safety" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips Keselamatan Malam Hari"
+          }
+        }
+      }
+    },
+    "Clear Night Weather Safety" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips Keselamatan Malam Hari"
+          }
+        }
+      }
+    },
+    "Cloudy\nPartly Cloudy" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berawan\nSebagian Besar Berawan"
+          }
+        }
+      }
+    },
+    "Conditions are dangerous with high risks." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kondisi berbahaya dengan risiko tinggi."
+          }
+        }
+      }
+    },
+    "Conditions are dangerous. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kondisi berbahaya."
+          }
+        }
+      }
+    },
+    "Conditions are favorable with no significant risks." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kondisi sangat baik, tidak ada risiko yang signifikan."
+          }
+        }
+      }
+    },
+    "Conditions are favorable. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kondisi cuaca mendukung."
+          }
+        }
+      }
+    },
+    "Conditions require precautions. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kondisi memerlukan tindakan pencegahan."
+          }
+        }
+      }
+    },
+    "Conditions require some precautions due to moderate risks" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kondisi memerlukan beberapa langkah pencegahan karena ada cukup risiko"
+          }
+        }
+      }
+    },
+    "Delete" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hapus"
+          }
+        }
+      }
+    },
+    "Dress warmly if it's cool. Ensure you have proper lighting and reflectors if walking or biking. Stay aware of your surroundings and carry a flashlight for better visibility." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kenakan pakaian hangat jika cuaca dingin. Pastikan Anda memiliki pencahayaan yang memadai dan reflektor jika berjalan kaki atau bersepeda. Tetap waspada terhadap sekitar Anda dan bawa senter untuk visibilitas yang lebih baik."
+          }
+        }
+      }
+    },
+    "Enjoy the outdoors! Air quality is excellent for all activities." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nikmati waktu di luar! Kualitas udara sangat baik untuk semua aktivitas."
+          }
+        }
+      }
+    },
+    "Enjoy your time outside without special precautions." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nikmati waktu Anda di luar."
+          }
+        }
+      }
+    },
+    "Enjoy your time outside, but consider wearing sunglasses and applying sunscreen if you'll be out for long periods." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nikmati waktu Anda di luar, tetapi pertimbangkan untuk memakai kacamata hitam dan mengoleskan sunscreen jika Anda akan berada di luar untuk waktu yang lama."
+          }
+        }
+      }
+    },
+    "Extreme" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ekstrem"
+          }
+        }
+      }
+    },
+    "Extreme UV Alert" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waspada UV Ekstrem"
+          }
+        }
+      }
+    },
+    "Good" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Baik"
+          }
+        }
+      }
+    },
+    "Good Air Quality" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara Baik"
+          }
+        }
+      }
+    },
+    "Hazardous" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Berbahaya"
+          }
+        }
+      }
+    },
+    "Hazardous Air Quality" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara Berbahaya"
+          }
+        }
+      }
+    },
+    "High" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tinggi"
+          }
+        }
+      }
+    },
+    "High UV Alert" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waspada UV Tinggi"
+          }
+        }
+      }
+    },
+    "Level: Extreme" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Ekstrem"
+          }
+        }
+      }
+    },
+    "Level: Good" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Baik"
+          }
+        }
+      }
+    },
+    "Level: Hazardous" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Berbahaya"
+          }
+        }
+      }
+    },
+    "Level: High" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Tinggi"
+          }
+        }
+      }
+    },
+    "Level: Low" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Rendah"
+          }
+        }
+      }
+    },
+    "Level: Moderate" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Sedang"
+          }
+        }
+      }
+    },
+    "Level: Unhealthy" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Tidak Sehat"
+          }
+        }
+      }
+    },
+    "Level: Unhealthy\nfor Some people" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Tidak Sehat untuk Beberapa Orang"
+          }
+        }
+      }
+    },
+    "Level: Very High" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Sangat Tinggi"
+          }
+        }
+      }
+    },
+    "Level: Very Unhealthy" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level: Sangat Tidak Sehat"
+          }
+        }
+      }
+    },
+    "Limit outdoor activities. Everyone should consider wearing masks to reduce exposure." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batasi aktivitas di luar ruangan. Semua orang sebaiknya mempertimbangkan untuk memakai masker agar mengurangi paparan"
+          }
+        }
+      }
+    },
+    "Limit your time in direct sunlight. Wear protective clothing, a hat, and sunglasses. Apply broad-spectrum SPF 30+ sunscreen, and reapply every 2 hours." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Batasi waktu di bawah sinar matahari langsung. Pakai pakaian pelindung, topi, dan kacamata hitam. Gunakan broad-spectrum sunscreen SPF 30+ setiap 2 jam."
+          }
+        }
+      }
+    },
+    "Low" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rendah"
+          }
+        }
+      }
+    },
+    "Low UV" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UV Rendah"
+          }
+        }
+      }
+    },
+    "Minimize your sun exposure. Seek shade, wear protective clothing, a hat, and sunglasses. Apply broad-spectrum SPF 30+ sunscreen, and reapply every 2 hours." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Minimalkan paparan sinar matahari. Cari tempat teduh, pakai pakaian pelindung, topi, dan kacamata hitam. Gunakan broad-spectrum sunscreen SPF 30+ setiap 2 jam."
+          }
+        }
+      }
+    },
+    "Moderate" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedang"
+          }
+        }
+      }
+    },
+    "Moderate\nHigh" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedang\nTinggi"
+          }
+        }
+      }
+    },
+    "Moderate\nSensitive\nUnhealthy" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sedang\nSensitif\nTidak Sehat"
+          }
+        }
+      }
+    },
+    "Moderate Air Quality" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara Sedang"
+          }
+        }
+      }
+    },
+    "Moderate UV Alert" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waspada UV Sedang"
+          }
+        }
+      }
+    },
+    "Mostly Sunny\nLight Rain\nHeavy Rain" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cerah\nGerimis\nHujan Deras"
+          }
+        }
+      }
+    },
+    "Rainy Weather Safety" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips Keselamatan Cuaca Hujan"
+          }
+        }
+      }
+    },
+    "Safe" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aman"
+          }
+        }
+      }
+    },
+    "Safety Status" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status Keamanan"
+          }
+        }
+      }
+    },
+    "Safety Status is a system designed to inform individuals about the safety of outdoor conditions based on factors such as weather, UV index, and air quality. It helps people determine the level of precaution needed to stay safe and healthy when going outside." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Status Keamanan adalah sistem yang dirancang untuk memberi tahu individu tentang keamanan kondisi luar ruangan berdasarkan faktor-faktor seperti cuaca, indeks UV, dan kualitas udara. Sistem ini membantu orang menentukan tingkat tindakan pencegahan yang diperlukan untuk tetap aman dan sehat saat beraktivitas di luar."
+          }
+        }
+      }
+    },
+    "Safety Tips" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tips Keselamatan"
+          }
+        }
+      }
+    },
+    "Save" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Simpan"
+          }
+        }
+      }
+    },
+    "Seek shade when possible. Wear protective clothing, a hat, and sunglasses. Apply broad-spectrum SPF 30+ sunscreen, and reapply every 2 hours." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cari tempat teduh jika memungkinkan. Pakai pakaian pelindung, topi, dan kacamata hitam. Gunakan broad-spectrum sunscreen SPF 30+ setiap 2 jam."
+          }
+        }
+      }
+    },
+    "Sensitive Air Quality" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara Sensitif"
+          }
+        }
+      }
+    },
+    "Sensitive groups (children, elderly, and those with respiratory issues) should reduce outdoor activities. Everyone else can enjoy but wear a mask if exerting themselves." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Orang sensitif (anak-anak, lansia, dan penderita masalah pernapasan) sebaiknya mengurangi aktivitas di luar ruangan. Orang lain tetap dapat  beraktivitas di luar ruangan, namun kenakan masker jika melakukan aktivitas fisik berat."
+          }
+        }
+      }
+    },
+    "Stay hydrated and wear lightweight clothing. Avoid strenuous activities during peak heat hours and seek shade or air-conditioned places." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jaga asupan air dan kenakan pakaian ringan. Hindari aktivitas berat selama jam-jam terpanas dan cari tempat teduh atau ber-AC."
+          }
+        }
+      }
+    },
+    "Stay hydrated, wear lightweight clothing, and seek shade or air-conditioned places. Avoid strenuous activities during the hottest parts of the day." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jaga asupan air, kenakan pakaian ringan, dan cari tempat teduh atau dengan pendingin ruangan. Hindari aktivitas berat selama jam-jam terpanas."
+          }
+        }
+      }
+    },
+    "Stay indoors. Avoid all outdoor activities. Everyone should wear masks if they must go outside. Health warnings in effect for all." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tetap di dalam ruangan. Hindari aktivitas di luar ruangan. Setiap orang harus memakai masker jika harus keluar rumah. Peringatan kesehatan berlaku untuk semua."
+          }
+        }
+      }
+    },
+    "The Air Quality Index (AQI) is a scale used to measure and report air quality levels. It indicates how clean or polluted the air is and what associated health effects might be a concern for the public. Higher AQI values represent higher levels of air pollution and greater health risks." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks Kualitas Udara (Air Quality Index) adalah skala yang digunakan untuk mengukur dan melaporkan tingkat kualitas udara. Indeks ini menunjukkan seberapa bersih atau terpolusi udara, serta dampak kesehatan yang mungkin menjadi perhatian bagi publik. Nilai AQI yang lebih tinggi menunjukkan tingkat polusi udara yang lebih tinggi dan risiko kesehatan yang lebih besar."
+          }
+        }
+      }
+    },
+    "The UV Index is a measure of the strength of ultraviolet (UV) radiation from the sun at a specific place and time. It helps indicate the potential risk of harm from sun exposure, with higher values indicating a greater risk." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV adalah ukuran kekuatan radiasi ultraviolet (UV) dari matahari di suatu tempat dan waktu tertentu. Ini membantu menunjukkan potensi risiko kerusakan akibat paparan sinar matahari, dengan nilai yang lebih tinggi menunjukkan risiko yang lebih besar."
+          }
+        }
+      }
+    },
+    "The weather is clear. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuaca cerah."
+          }
+        }
+      }
+    },
+    "The weather is not ideal. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuaca tidak ideal."
+          }
+        }
+      }
+    },
+    "Thunderstorm" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hujan Petir"
+          }
+        }
+      }
+    },
+    "Unhealthy" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Sehat"
+          }
+        }
+      }
+    },
+    "Unhealthy Air Quality" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara Tidak Sehat"
+          }
+        }
+      }
+    },
+    "Unhealthy For Some People" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Sehat Untuk Beberapa Orang"
+          }
+        }
+      }
+    },
+    "Unsafe" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tidak Aman"
+          }
+        }
+      }
+    },
+    "UV Index" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV"
+          }
+        }
+      }
+    },
+    "UV index is %@. " : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV %@."
+          }
+        }
+      }
+    },
+    "UV Index: 0-2" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV: 0-2"
+          }
+        }
+      }
+    },
+    "UV Index: 3-5" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV: 3-5"
+          }
+        }
+      }
+    },
+    "UV Index: 6-7" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV: 6-7"
+          }
+        }
+      }
+    },
+    "UV Index: 8-10" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV: 8-10"
+          }
+        }
+      }
+    },
+    "UV Index: 11+" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Indeks UV: 11+"
+          }
+        }
+      }
+    },
+    "UVI" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "UVI"
+          }
+        }
+      }
+    },
+    "UVI Level" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Level UVI"
+          }
+        }
+      }
+    },
+    "Very High" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sangat Tinggi"
+          }
+        }
+      }
+    },
+    "Very High\nExtreme" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sangat Tinggi\nEkstrem"
+          }
+        }
+      }
+    },
+    "Very High UV Alert" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Waspada UV Sangat Tinggi"
+          }
+        }
+      }
+    },
+    "Very Unhealthy" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sangat Tidak Sehat"
+          }
+        }
+      }
+    },
+    "Very Unhealthy\nHazardous" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sangat Tidak Sehat\nBerbahaya"
+          }
+        }
+      }
+    },
+    "Very Unhealthy Air Quality" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kualitas Udara Sangat Tidak Sehat"
+          }
+        }
+      }
+    },
+    "Wear waterproof jackets, boots, and carry an umbrella. Watch for slippery surfaces and avoid flooded areas. Drive slower and keep a safe distance." : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Kenakan jaket tahan air, sepatu bot, dan bawa payung. Waspadai permukaan yang licin dan hindari area yang banjir. Berkendaralah lebih lambat dan jaga jarak aman."
+          }
+        }
+      }
+    },
+    "Weather" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cuaca"
+          }
+        }
+      }
+    },
+    "Weather Safety" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keselamatan Cuaca"
+          }
+        }
+      }
+    },
+    "WeatherCare" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "WeatherCare"
+          }
+        }
+      }
+    },
+    "What is Air Quality Index?" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apa itu Indeks Kualitas Udara?"
+          }
+        }
+      }
+    },
+    "What is Safety Status?" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apa itu Status Keamanan?"
+          }
+        }
+      }
+    },
+    "What is UV Index?" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apa itu Indeks UV?"
+          }
+        }
+      }
+    },
+    "What is Weather Safety Tips?" : {
+      "localizations" : {
+        "id" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Apa itu Tips Keselamatan Cuaca?"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

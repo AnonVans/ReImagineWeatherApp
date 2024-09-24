@@ -35,7 +35,7 @@ struct SearchLocationView: View {
                                     WeatherDetailPage(
                                         placeName: locData.city,
                                         region: locData.region,
-                                        location: locCoor
+                                        locCoor: locCoor
                                     )
                                 }
                         }
@@ -49,6 +49,7 @@ struct SearchLocationView: View {
                 Spacer()
             }
         }
+        .navigationBarTitleDisplayMode(.inline)
     }
     
     private func searchLocation() {
