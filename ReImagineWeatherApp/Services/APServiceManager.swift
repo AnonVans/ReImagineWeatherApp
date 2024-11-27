@@ -57,12 +57,6 @@ class APService: APServiceManagerProtocol {
         return AQDataModel()
     }
     
-//    func checkData() {
-//        for datum in apData {
-//            print("ts: \(datum.timeStamp.formatted())\naqi: \(datum.aqi)\nlevel:\(datum.level)")
-//        }
-//    }
-    
     func processData(_ coordinate: (lat: Double, lon: Double)) async {
         var aqdata = [PollutantData]()
         
@@ -75,12 +69,8 @@ class APService: APServiceManagerProtocol {
         for data in aqdata {
             let aqiObj = calculateAQI(data.components)
             
-            print("lvl: \(aqiObj.lvl) || val: \(aqiObj.aqi)")
-            
             self.apData.append(APDataModel(timeStamp: data.getTimeStamp(), level: aqiObj.lvl, aqi: aqiObj.aqi))
         }
-        
-//        checkData()
     }
     
     func fetchHourData(_ coord: (lat: Double, lon: Double), _ date: Date) async -> APDataModel {
@@ -201,8 +191,6 @@ class APService: APServiceManagerProtocol {
         if self.apData.isEmpty {
             await processData(coord)
         }
-        
-        var dayAPData = APDataModel()
         
         let calendar = Calendar(identifier: .gregorian)
         let startOfDay = calendar.startOfDay(for: Date())

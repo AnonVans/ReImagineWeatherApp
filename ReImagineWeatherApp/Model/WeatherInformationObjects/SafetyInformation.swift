@@ -5,19 +5,19 @@
 //  Created by Stevans Calvin Candra on 16/07/24.
 //
 
-import Foundation
+import SwiftUI
 
 extension SafetyInformation {
-    var save: (UV: String, AQ: String, Weather: String) {
-        return (String(localized: "Low"), String(localized: "Low"), String(localized: "Cloudy\nPartly Cloudy"))
+    var safe: (UV: String, AQ: String, Weather: String, CircleColor: Color) {
+        return (String(localized: "Low"), String(localized: "Low"), String(localized: "Cloudy\nPartly Cloudy"), Color.paleGreenCircle)
     }
     
-    var caution: (UV: String, AQ: String, Weather: String) {
-        return (String(localized: "Moderate\nHigh"), String(localized: "Moderate\nSensitive\nUnhealthy"), String(localized: " Mostly Sunny\nLight Rain\nHeavy Rain"))
+    var caution: (UV: String, AQ: String, Weather: String, CircleColor: Color) {
+        return (String(localized: "Moderate\nHigh"), String(localized: "Moderate\nSensitive\nUnhealthy"), String(localized: "Mostly Sunny\nLight Rain\nHeavy Rain"), Color.paleGoldenrodCircle)
     }
     
-    var unsafe: (UV: String, AQ: String, Weather: String) {
-        return (String(localized: "Very High\nExtreme"), String(localized: "Very Unhealthy\nHazardous"), String(localized: "Thunderstorm"))
+    var unsafe: (UV: String, AQ: String, Weather: String, CircleColor: Color) {
+        return (String(localized: "Very High\nExtreme"), String(localized: "Very Unhealthy\nHazardous"), String(localized: "Thunderstorm"), Color.mauvelousCircle)
     }
 }
 

@@ -57,7 +57,7 @@ struct APDataModel {
     var level: Int
     var aqi: Int
     
-    init(timeStamp: Date = Date.now, level: Int = 0, aqi: Int = 25) {
+    init(timeStamp: Date = Date.now, level: Int = 0, aqi: Int = -1) {
         self.timeStamp = timeStamp
         self.level = level
         self.aqi = aqi

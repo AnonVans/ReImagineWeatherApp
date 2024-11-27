@@ -8,12 +8,12 @@
 import Foundation
 
 enum InfoType {
-    case Text
-    case Image
-    case Special
+    case TextData
+    case ImageData
+    case SpecialData
 }
 
-struct InfoDetailCard {
+struct InfoDetailCard: Hashable {
     var infoDetailName: String
     var infoDetailType: String
     var infoDetailDescription: String
